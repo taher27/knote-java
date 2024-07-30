@@ -1,0 +1,12 @@
+client^|^email^|^otp
+mobile^|^example@example.com^|^123456
+web^|^user@test.com^|^654321
+desktop^|^invalid_email^|^987654
+api^|^api_user@domain.com^|^111111
+mobile^|^mobile@test.co^|^222222
+web^|^web_user@sample.net^|^333333
+desktop^|^desktop.user@invalid^|^444444
+api^|^apiuser@valid.io^|^555555
+mobile^|^nomail^|^666666
+web^|^skipthispart^|^777777
+desktop^|^test.account@site.com^|^888888

@@ -1,0 +1,11 @@
+invalidApiKey^|^malformedPayload
+12345^|^{"name":"John", "age":30, "city":"New York"}
+apikey-67890^|^{"name": "Anna", "age": "twenty-five", "city": "Berlin"}
+INVALID_KEY^|^{"name":"Peter", "age":28, "city":"London"}
+api_key_13579^|^
+abcd1234^|^{"name":"Jane", "age":null, "city":"Paris"}
+null^|^{"name":"Dave", "age":34, "city":"Tokyo"}
+key-24680^|^{"name":"Maria", "age":29, "city":"invalid_city"}
+validKey^|^{"name":"Steve", "age":"29", "city":"San Francisco"}
+api12345^|^{"name":"Alice"}
+api_key_xyz^|^{"name":"Bob", "age":27, "city":"Rio de Janeiro"}

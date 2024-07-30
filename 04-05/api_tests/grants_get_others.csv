@@ -1,0 +1,11 @@
+invalidAccountId^|^invalidToken
+12345^|^abc$123
+67890^|^xyz/789
+abcde^|^12345
+11223^|^token/invalid
+334455^|^
+^|^token123
+hello^|^world
+99999^|^00000
+^|^
+123abc^|^def456

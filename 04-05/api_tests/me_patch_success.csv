@@ -1,0 +1,12 @@
+name^|^image^|^settings
+John Doe^|^data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD//gA7Q1JF...^|^{"theme":"dark","notifications":true}
+Jane Smith^|^data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAA...^|^{"theme":"light","notifications":false}
+Emily Johnson^|^data:image/gif;base64,R0lGODlhPQBEAPeoAJosM//AwO...^|^{"theme":"dark","notifications":true}
+Michael Brown^|^data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAAAAAAAD/4QAiRXhpZgAATU0AKgAAAAgAAQESAAMAAAABAAEAAIdpAAQAAAABAAAAJgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAABPKADAAQAAAABAAAA7QAAAAD/2wBDABkS...^|^{"theme":"light","notifications":true}
+Chloe Davis^|^data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUA...^|^{"theme":"dark","notifications":false}
+William Garcia^|^data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BA...^|^{"theme":"light","notifications":true}
+Sophia Martinez^|^data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD...^|^{"theme":"dark","notifications":false}
+Oliver Wilson^|^data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAA...^|^{"theme":"light","notifications":true}
+Isabella Anderson^|^data:image/gif;base64,R0lGODlhPQBEAPeoAJosM//AwO...^|^{"theme":"dark","notifications":true}
+Ethan Thomas^|^data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAAAAAAAD...^|^{"theme":"light","notifications":false}
+Ava Jackson^|^data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUA...^|^{"theme":"dark","notifications":true}

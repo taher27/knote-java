@@ -1,0 +1,11 @@
+authorizationId^|^name^|^email^|^createdAt^|^updatedAt
+b5e2e368-1b7f-41f4-9c4a-2e8dca1c26f0^|^John Doe^|^john.doe@example.com^|^2023-03-01T08:30:00Z^|^2023-03-10T17:45:00Z
+f5b8b667-a8b4-4493-b3f5-13b9c8a6f2b1^|^Jane Smith^|^jane.smith@example.com^|^2023-03-02T09:15:00Z^|^2023-03-11T18:20:00Z
+4b2c9ff1-6f8d-4d9b-8f23-4e62b911e7f9^|^Emily Johnson^|^emily.johnson@example.com^|^2023-03-03T10:05:00Z^|^2023-03-12T19:30:00Z
+a3c5e616-4f83-46cc-abaf-8c2071d5c884^|^Michael Brown^|^michael.brown@example.com^|^2023-03-04T11:45:00Z^|^2023-03-13T20:15:00Z
+c9fbd4e9-5c2e-4aad-8f8b-d9f5e3f7811e^|^Linda Davis^|^linda.davis@example.com^|^2023-03-05T12:30:00Z^|^2023-03-14T21:00:00Z
+d7e5b2a1-3c70-4eef-bb9d-6c8fbb9f5d2e^|^James Wilson^|^james.wilson@example.com^|^2023-03-06T13:20:00Z^|^2023-03-15T22:45:00Z
+e8f1d4b9-0ed6-4aeb-b2d1-9a3ed4e4f3b1^|^Patricia Martinez^|^patricia.martinez@example.com^|^2023-03-07T14:10:00Z^|^2023-03-16T23:30:00Z
+9d2c3ab2-8f1c-4d6a-9dfe-7c2f68ecf3a0^|^Robert Anderson^|^robert.anderson@example.com^|^2023-03-08T15:50:00Z^|^2023-03-17T00:05:00Z
+6f3d2b5c-2e9b-4fd7-8e5e-3b2c9a4f02d4^|^Jennifer Thomas^|^jennifer.thomas@example.com^|^2023-03-09T16:25:00Z^|^2023-03-18T01:10:00Z
+b1a7d9f1-2c9f-471b-aa65-4e8d1a5f5f7c^|^William Jackson^|^william.jackson@example.com^|^2023-03-10T17:00:00Z^|^2023-03-19T02:20:00Z

@@ -1,0 +1,11 @@
+name^|^image^|^settings
+John Doe^|^data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD//gA7Q1JF...^|^{"theme":"light","notifications":true}
+Jane Smith^|^data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...^|^{"theme":"dark","notifications":false}
+Alex Johnson^|^^|^{"language":"en","privacy":"public"}
+Emily Davis^|^not_base64^|^{"theme":"light","notifications":true}
+Michael Brown^|^data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...^|^{"theme":"dark"}
+Jessica Garcia^|^^|^{"language":"es","privacy":"private"}
+Daniel Martinez^|^data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD...^|^{"theme":"light"}
+Elizabeth Gonzalez^|^data:image/gif;base64,R0lGODlhPQBEAPeoAJosM...^|^
+William Wilson^|^data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD...^|^{"theme":"dark","notifications":true,"fontsize":14}
+Sophia Anderson^|^INVALID_IMAGE^|^{"theme":"light","notifications":false,"fontsize":"large"}

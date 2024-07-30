@@ -1,0 +1,12 @@
+invalidToken^|^invalidAccountId
+12345^|^abc-123
+abcde^|^123-xyz
+67890^|^def-456
+ghijk^|^456-uvw
+13579^|^ghi-789
+lmnop^|^789-rst
+24680^|^jkl-012
+qrstuv^|^012-mno
+96300^|^nop-345
+wxyz^|^345-qaz
+102938^|^zyx-678

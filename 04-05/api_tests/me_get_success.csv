@@ -1,0 +1,11 @@
+id^|^did^|^name^|^image^|^email^|^settings^|^createdAt^|^updatedAt
+123e4567-e89b-12d3-a456-426614174000^|^DID001^|^John Doe^|^https://example.com/image01.png^|^john.doe@example.com^|^{"theme":"dark","notifications":true}^|^2023-01-01T00:00:00Z^|^2023-01-02T00:00:00Z
+123e4567-e89b-12d3-a456-426614174001^|^DID002^|^Jane Smith^|^https://example.com/image02.png^|^jane.smith@example.com^|^{"theme":"light","notifications":false}^|^2023-01-02T00:00:00Z^|^2023-01-03T00:00:00Z
+123e4567-e89b-12d3-a456-426614174002^|^DID003^|^Alice Johnson^|^https://example.com/image03.png^|^alice.johnson@example.com^|^{"language":"en","privacy":"high"}^|^2023-01-03T00:00:00Z^|^2023-01-04T00:00:00Z
+123e4567-e89b-12d3-a456-426614174003^|^DID004^|^Bob Brown^|^https://example.com/image04.png^|^bob.brown@example.com^|^{"timezone":"GMT","layout":"compact"}^|^2023-01-04T00:00:00Z^|^2023-01-05T00:00:00Z
+123e4567-e89b-12d3-a456-426614174004^|^DID005^|^Charlie Davis^|^https://example.com/image05.png^|^charlie.davis@example.com^|^{"alerts":"enabled","display":"high-contrast"}^|^2023-01-05T00:00:00Z^|^2023-01-06T00:00:00Z
+123e4567-e89b-12d3-a456-426614174005^|^DID006^|^Danielle Harris^|^https://example.com/image06.png^|^danielle.harris@example.com^|^{"ads":"personalized","search":"private"}^|^2023-01-06T00:00:00Z^|^2023-01-07T00:00:00Z
+123e4567-e89b-12d3-a456-426614174006^|^DID007^|^Evan Turner^|^https://example.com/image07.png^|^evan.turner@example.com^|^{"currency":"USD","units":"imperial"}^|^2023-01-07T00:00:00Z^|^2023-01-08T00:00:00Z
+123e4567-e89b-12d3-a456-426614174007^|^DID008^|^Fiona Clark^|^https://example.com/image08.png^|^fiona.clark@example.com^|^{"chat":"enabled","email":"digest"}^|^2023-01-08T00:00:00Z^|^2023-01-09T00:00:00Z
+123e4567-e89b-12d3-a456-426614174008^|^DID009^|^George King^|^https://example.com/image09.png^|^george.king@example.com^|^{"data_saver":"on","resolution":"1080p"}^|^2023-01-09T00:00:00Z^|^2023-01-10T00:00:00Z
+123e4567-e89b-12d3-a456-426614174009^|^DID010^|^Hannah Lee^|^https://example.com/image10.png^|^hannah.lee@example.com^|^{"security":"2fa","backup":"cloud"}^|^2023-01-10T00:00:00Z^|^2023-01-11T00:00:00Z
