@@ -1,0 +1,2 @@
+id,requestBody,expectedResponse
+"'d290f1ee-6c54-4b01-90e6-d701748f0851'","{"tradeName":"New Trade","phone":"1234567890","email":"newtrade@example.com"}","{"id":"d290f1ee-6c54-4b01-90e6-d701748f0851","tradeName":"New Trade","phone":"1234567890","email":"newtrade@example.com","cocNumber":"12345678","cocBranchNumber":"123456789012","tradeNames":["New Trade"],"eoriNumber":"NL123456789","deregistrationDate":null,"createdAt":"2021-01-01T09:00:00Z","updatedAt":"2021-01-02T09:00:00Z"}"

@@ -1,0 +1,2 @@
+id,requestBody,expectedResponse
+"'123e4567-e89b-12d3-a456-426614174000'","{"reference":"ref-001","startDate":"2022-01-01","credentialUrl":"http://example.com/credential"}","{"id":"#uuid","reference":"ref-001","startDate":"2022-01-01","endDate":null,"status":"active","credentialUrl":"http://example.com/credential","suspendedUntil":null,"issuedAt":"#string","createdAt":"#string","updatedAt":"#string"}"
