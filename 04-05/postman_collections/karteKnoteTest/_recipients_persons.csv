@@ -1,0 +1,10 @@
+birthDate,initials,lastName,firstName,middleName,birthPlace,phone,email,postalCode,houseNumber,houseNumberPostfix,countryCode,reference,statusCode,scenario
+"1970-05-20","JD","Doe","John","F.","New York","555-2368","john.doe@example.com","1234AB","42","A","US","Ref001",201,"successful operation"
+"1980-11-15","MS","Smith","Mary","L.","Los Angeles","555-4623","mary.smith@example.com","5678CD","108","B","GB","Ref002",201,"successful operation"
+"1990-07-30","RB","Brown","Richard","K.","Chicago","555-9821","richard.brown@example.com","9012EF","76","","CA","Ref003",201,"successful operation"
+"1965-09-25","AB","INVALID","Alice","B.","INVALID","INVALID","aliceINVALIDexample.com","INVALID","INVALID","INVALID","XX","Ref004",400,"Bad Request"
+"1978-02-17","CD","INVALID","Catherine","D.","INVALID","INVALID","catherineINVALIDexample.com","INVALID","INVALID","INVALID","XX","Ref005",400,"Bad Request"
+"1985-12-05","EF","INVALID","Edward","F.","INVALID","INVALID","edwardINVALIDexample.com","INVALID","INVALID","INVALID","XX","Ref006",400,"Bad Request"
+"1995-04-10","GH","INVALID","George","H.","INVALID","INVALID","georgeINVALIDexample.com","INVALID","INVALID","INVALID","XX","Ref007",401,"Authentication Required"
+"2000-08-20","IJ","INVALID","Isabella","J.","INVALID","INVALID","isabellaINVALIDexample.com","INVALID","INVALID","INVALID","XX","Ref008",401,"Authentication Required"
+"1992-03-15","KL","INVALID","Kevin","L.","INVALID","INVALID","kevinINVALIDexample.com","INVALID","INVALID","INVALID","XX","Ref009",401,"Authentication Required"

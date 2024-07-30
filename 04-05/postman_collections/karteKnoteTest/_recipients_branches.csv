@@ -1,0 +1,5 @@
+coc-number,coc-branch-number,trade-name,size,offset,statusCode,scenario
+"08769563","440988273706","ea",,200,successful operation
+"18659681","786899572821","quis elit",,200,successful operation
+"RANDOM1","RANDOM2","RANDOM3",,400,Bad Request
+"RANDOM4","RANDOM5","RANDOM6",,401,Authentication Required

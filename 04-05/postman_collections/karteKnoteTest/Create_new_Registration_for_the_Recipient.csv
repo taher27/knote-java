@@ -1,0 +1,4 @@
+id,credentialUrl,startDate,reference,endDate,statusCode,scenario
+"3e07f04d-4785-d7af-64bd-9cabcf4bd5f3","http://example.com","2009-06-28","RefSuccess","2023-04-01",201,Successful
+"b4c0b930-f5d9-4d0c-abe2-76a41e9b7f3f","http://invalid.com","2010-07-15","RefBadRequest","2024-05-02",400,Bad Request
+"cf4de6b7-3c22-4260-8d07-4b2b6d6a2cd2","http://authrequired.com","2011-08-21","RefAuthRequired","2025-06-03",401,Authentication Required

@@ -1,0 +1,5 @@
+size,offset,recipient-id,credential-url,statusCode,scenario
+10,5,urn:uuid:f0eae9e2-c9c0-90ae-8878-84ecf19c74ec,"https://example.com/credentials/62ec4211-6a03-e8fa-b2aa-4bf0b4bc80b3",200,successful operation
+15,10,76922241-5f5e-dbe5-d41d-50a0c7ce6e22,"https://example.com/credentials/4ee16434-0454-5104-8a47-4ccfcf10b832",200,successful operation
+20,15,urn:uuid:random-invalid-id,"https://invalid-credential-url",400,Bad Request
+25,20,urn:uuid:another-invalid-id,"https://another-invalid-credential-url",401,Authentication Required

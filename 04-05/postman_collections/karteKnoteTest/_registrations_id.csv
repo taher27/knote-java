@@ -1,0 +1,4 @@
+id,reference,revoked,suspendedUntil,endDate,statusCode,scenario
+"39adf150-197b-fd63-cf76-c46a9d020814","<string>",false,"<date>","<date>",200,successful operation
+"39adf150-197b-fd63-cf76-c46a9d020814","<string>",true,"<date>","<date>",400,Bad Request
+"39adf150-197b-fd63-cf76-c46a9d020814","<string>",true,"<date>","<date>",401,Authentication Required

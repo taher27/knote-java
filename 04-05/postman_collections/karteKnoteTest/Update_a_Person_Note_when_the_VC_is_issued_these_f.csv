@@ -1,0 +1,4 @@
+id,initials,firstName,middleName,lastName,birthDate,birthPlace,phone,email,postalCode,houseNumber,houseNumberPostfix,countryCode,reference,statusCode,scenario
+"urn:uuid:d554be72-b347-f91e-1e3e-96d53c8c4a92","JD","John","D","Doe","1975-05-20","New York","+1234567890","john.doe@example.com","1234AB","12","A","US","Ref200",200,"successful operation"
+"urn:uuid:e2f1c3d0-f1c3-4d0e-2f1c-e3d0f1c34d0e","ER","Eve","R","Roe","invalid-date","SomePlace","invalid-phone","eve@invalid","12345","123","B","ZZ","Ref400",400,"Bad Request"
+"urn:uuid:a1b2c3d4-e5f6-7g8h-i9j0-k1l2m3n4o5p6","AB","Alice","B","Black","invalid-date","AnotherPlace","invalid-phone","alice@invalid","54321","321","C","XX","Ref401",401,"Authentication Required"
