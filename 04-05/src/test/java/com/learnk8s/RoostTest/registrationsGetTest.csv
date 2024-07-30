@@ -1,0 +1,11 @@
+size^|^offset^|^recipient-id^|^credential-url^|^RequestBody^|^statusCode^|^Token
+25^|^0^|^b1ec2dda-0001-4000-a000-000000000001^|^http://example.com/credentials/25^|^{ "operation": "create", "data": { "name": "John Doe", "email": "john.doe@example.com" } }^|^200^|^abc123token
+15^|^5^|^b1ec2dda-0002-4000-a000-000000000002^|^http://example.com/credentials/15^|^{ "operation": "update", "data": { "name": "Jane Smith", "email": "jane.smith@example.com" } }^|^200^|^def456token
+30^|^10^|^b1ec2dda-0003-4000-a000-000000000003^|^http://example.com/credentials/30^|^{ "operation": "delete", "id": "b1ec2dda-0003-4000-a000-000000000003" }^|^200^|^ghi789token
+20^|^15^|^b1ec2dda-0004-4000-a000-000000000004^|^http://example.com/credentials/20^|^{ "operation": "read", "id": "b1ec2dda-0004-4000-a000-000000000004" }^|^200^|^jkl012token
+50^|^20^|^b1ec2dda-0005-4000-a000-000000000005^|^http://example.com/credentials/50^|^{ "operation": "create", "data": { "name": "Alice Brown", "email": "alice.brown@example.com" } }^|^200^|^mno345token
+40^|^25^|^b1ec2dda-0006-4000-a000-000000000006^|^http://example.com/credentials/40^|^{ "operation": "update", "data": { "name": "Bob Johnson", "email": "bob.johnson@example.com" } }^|^200^|^pqr678token
+10^|^30^|^b1ec2dda-0007-4000-a000-000000000007^|^http://example.com/credentials/10^|^{ "operation": "delete", "id": "b1ec2dda-0007-4000-a000-000000000007" }^|^400^|^stu901token
+35^|^35^|^b1ec2dda-0008-4000-a000-000000000008^|^http://example.com/credentials/35^|^{ "operation": "read", "id": "b1ec2dda-0008-4000-a000-000000000008" }^|^401^|^vwx234token
+45^|^40^|^b1ec2dda-0009-4000-a000-000000000009^|^http://example.com/credentials/45^|^{ "operation": "create", "data": { "name": "Charlie Davis", "email": "charlie.davis@example.com" } }^|^200^|^yz0123token
+5^|^45^|^b1ec2dda-0010-4000-a000-000000000010^|^http://example.com/credentials/5^|^{ "operation": "update", "data": { "name": "Diana Evans", "email": "diana.evans@example.com" } }^|^200^|^abc456token

@@ -1,0 +1,11 @@
+id^|^RequestBody^|^statusCode^|^Token
+123e4567-e89b-12d3-a456-426614174000^|^{ "reference": "ref123", "startDate": "2023-01-01", "endDate": "2023-01-02", "credentialUrl": "https://example.com/credentials/123" }^|^201^|^token123
+123e4567-e89b-12d3-a456-426614174001^|^{ "reference": "ref124", "startDate": "2023-02-01", "endDate": null, "credentialUrl": "https://example.com/credentials/124" }^|^400^|^token124
+123e4567-e89b-12d3-a456-426614174002^|^{ "reference": "ref125", "startDate": "2023-03-01", "endDate": "2023-03-05", "credentialUrl": "https://example.com/credentials/125" }^|^401^|^token125
+123e4567-e89b-12d3-a456-426614174003^|^{ "reference": "ref126", "startDate": "2023-04-01", "endDate": null, "credentialUrl": "https://example.com/credentials/126" }^|^201^|^token126
+123e4567-e89b-12d3-a456-426614174004^|^{ "reference": "ref127", "startDate": "2023-05-01", "endDate": "2023-05-02", "credentialUrl": "https://example.com/credentials/127" }^|^400^|^token127
+123e4567-e89b-12d3-a456-426614174005^|^{ "reference": "ref128", "startDate": "2023-06-01", "endDate": null, "credentialUrl": "https://example.com/credentials/128" }^|^401^|^token128
+123e4567-e89b-12d3-a456-426614174006^|^{ "reference": "ref129", "startDate": "2023-07-01", "endDate": "2023-07-03", "credentialUrl": "https://example.com/credentials/129" }^|^201^|^token129
+123e4567-e89b-12d3-a456-426614174007^|^{ "reference": "ref130", "startDate": "2023-08-01", "endDate": null, "credentialUrl": "https://example.com/credentials/130" }^|^400^|^token130
+123e4567-e89b-12d3-a456-426614174008^|^{ "reference": "ref131", "startDate": "2023-09-01", "endDate": "2023-09-04", "credentialUrl": "https://example.com/credentials/131" }^|^401^|^token131
+123e4567-e89b-12d3-a456-426614174009^|^{ "reference": "ref132", "startDate": "2023-10-01", "endDate": null, "credentialUrl": "https://example.com/credentials/132" }^|^201^|^token132

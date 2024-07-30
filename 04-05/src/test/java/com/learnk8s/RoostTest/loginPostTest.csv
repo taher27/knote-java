@@ -1,0 +1,12 @@
+RequestBody^|^statusCode
+{"email":"johndoe1@example.com","otp":"A1B2C3","client":"mobile"}^|^201
+{"email":"janedoe2@example.com","otp":"D4E5F6","client":"web"}^|^400
+{"email":"mikebrown3@example.com","otp":"G7H8I9","client":"desktop"}^|^201
+{"email":"lucygreen4@example.com","otp":"J0K1L2","client":"api"}^|^400
+{"email":"samwhite5@example.com","otp":"M3N4O5","client":"mobile"}^|^201
+{"email":"emilyblack6@example.com","otp":"P6Q7R8","client":"web"}^|^400
+{"email":"davegrey7@example.com","otp":"S9T0U1","client":"desktop"}^|^201
+{"email":"lilybrown8@example.com","otp":"V2W3X4","client":"api"}^|^400
+{"email":"jackblue9@example.com","otp":"Y5Z6A7","client":"mobile"}^|^201
+{"email":"chloewhite10@example.com","otp":"B8C9D0","client":"web"}^|^400
+{"email":"ryanblack11@example.com","otp":"E1F2G3","client":"desktop"}^|^201

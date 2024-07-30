@@ -1,0 +1,11 @@
+RequestBody^|^statusCode^|^Token
+{"email":"user01@example.com"}^|^201^|^token123456abcdef
+{"email":"user02@example.com"}^|^400^|^token234567abcdef
+{"email":"user03@example.com"}^|^401^|^token345678abcdef
+{"email":"user04@example.com"}^|^201^|^token456789abcdef
+{"email":"user05@example.com"}^|^400^|^token567890abcdef
+{"email":"user06@example.com"}^|^401^|^token678901abcdef
+{"email":"user07@example.com"}^|^201^|^token789012abcdef
+{"email":"user08@example.com"}^|^400^|^token890123abcdef
+{"email":"user09@example.com"}^|^401^|^token901234abcdef
+{"email":"user10@example.com"}^|^201^|^token012345abcdef
