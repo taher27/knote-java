@@ -1,0 +1,11 @@
+kvkNummer^|^vestigingsnummer^|^handelsnaam^|^RequestBody^|^statusCode^|^Token
+12345678^|^000012345678^|^Handelsnaam B.V.^|^{ "request": "data", "type": "profile" }^|^200^|^ABC123TOKEN456XYZ
+23456789^|^000023456789^|^Bedrijfsnaam NV^|^{ "request": "info", "type": "account" }^|^201^|^DEF456TOKEN789ABC
+34567890^|^000034567890^|^Onderneming Ltd^|^{ "request": "update", "type": "email" }^|^202^|^GHI789TOKEN012DEF
+45678901^|^000045678901^|^Zaak Corp^|^{ "request": "query", "type": "status" }^|^203^|^JKL012TOKEN345GHI
+56789012^|^000056789012^|^Firma GmbH^|^{ "request": "action", "type": "validation" }^|^204^|^MNO345TOKEN678JKL
+67890123^|^000067890123^|^Entiteit Inc.^|^{ "request": "submit", "type": "order" }^|^205^|^PQR678TOKEN901MNO
+78901234^|^000078901234^|^Société SARL^|^{ "request": "post", "type": "comment" }^|^206^|^STU901TOKEN234PQR
+89012345^|^000089012345^|^Organisatie VOF^|^{ "request": "get", "type": "data" }^|^207^|^VWX234TOKEN567STU
+90123456^|^000090123456^|^Company AG^|^{ "request": "fetch", "type": "profile" }^|^208^|^YZA567TOKEN890VWX
+01234567^|^000001234567^|^Negozio Srl^|^{ "request": "delete", "type": "account" }^|^209^|^BCD890TOKEN123YZA

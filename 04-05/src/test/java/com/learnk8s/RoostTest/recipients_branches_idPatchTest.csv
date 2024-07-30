@@ -1,0 +1,11 @@
+id^|^RequestBody^|^statusCode^|^Token
+d54f3e23-2f52-4e2a-9b9b-79b9e5b4a3c1^|^{ "tradeName": "Innovatech Solutions", "phone": "123-456-7890", "email": "contact@innovatechsolutions.com" }^|^200^|^
+7c4a8d09-ca89-469b-8a43-6e4e3ec3e5d7^|^{ "tradeName": "TechCorp", "phone": "321-654-0987", "email": "info@techcorp.io" }^|^200^|^
+5d41402a-4bde-4e56-89fb-0a6eb1ca37e6^|^{ "tradeName": "QuickFix Gadgets", "phone": null, "email": "support@quickfixgadgets.com" }^|^400^|^
+8b1a9953-c461-4e4f-8b89-154f6aef2616^|^{ "tradeName": "GreenScape", "phone": "456-123-7890", "email": null }^|^401^|^
+4e5fd8ab-5bfa-4d0b-87b2-7fb25fe68aae^|^{ "tradeName": "Bloom and Grow", "phone": "789-456-1230", "email": "hello@bloomandgrow.org" }^|^200^|^
+92c2c31b-5d15-4c5e-9efa-6a6f4e5f2c34^|^{ "tradeName": "CodeCrafters", "phone": null, "email": "contact@codecrafters.tech" }^|^400^|^
+b6d767d2-f8b8-46f5-a4c2-3d6a2c8a4d97^|^{ "tradeName": "NextGen Innovations", "phone": "112-358-1321", "email": null }^|^200^|^
+3d6e6a7e-3e6d-4d2c-a4c3-82e2c6a2a4d9^|^{ "tradeName": "EcoTech", "phone": "654-321-9870", "email": "green@ecotech.com" }^|^401^|^
+f83c1d71-5d5d-4e75-b00b-68cb3e5a5d8e^|^{ "tradeName": "Skyline Designs", "phone": "963-852-7410", "email": "designs@skyline.com" }^|^200^|^
+c9f0f895-fb98-4b8d-8d8c-69d5c4a5d8a7^|^{ "tradeName": "FreshFoods", "phone": "147-258-3690", "email": "contact@freshfoods.market" }^|^200^|^

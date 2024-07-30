@@ -1,0 +1,11 @@
+id^|^RequestBody^|^statusCode^|^Token
+4e2f3b9c-8a3f-4a9b-9f9d-2b9f4a9b9f9d^|^{reference:null,revoked:false,suspendedUntil:null,endDate:null}^|^200^|^
+5f3e2d1c-7b2f-48c9-a1e5-3b2d5c1d5e2e^|^{reference:"Ref123",revoked:true,suspendedUntil:"2023-04-12",endDate:"2023-12-31"}^|^401^|^
+6d4e1f2c-6c1f-49db-a0e6-4c2e6d1f2c6d^|^{reference:"Ref456",revoked:false,suspendedUntil:"2023-05-20",endDate:null}^|^400^|^
+7e5f2e3d-8d3e-4abe-b1f7-5d3e7e5f2e3d^|^{reference:null,revoked:true,suspendedUntil:null,endDate:"2024-01-01"}^|^200^|^
+8f6g3f4e-9e4f-5bcf-c2g8-6e4f8f6g3f4e^|^{reference:"Ref789",revoked:false,suspendedUntil:"2023-06-15",endDate:null}^|^401^|^
+9g7h4g5f-af5g-6cdf-d3h9-7f5g9g7h4g5f^|^{reference:null,revoked:true,suspendedUntil:null,endDate:"2024-05-30"}^|^400^|^
+ah8i5h6g-bg6h-7def-e4i0-8g6hah8i5h6g^|^{reference:"Ref012",revoked:false,suspendedUntil:"2023-07-21",endDate:null}^|^200^|^
+bi9j6i7h-ch7i-8efg-f5j1-9h7ibi9j6i7h^|^{reference:null,revoked:true,suspendedUntil:null,endDate:"2024-10-10"}^|^401^|^
+cj0k7j8i-di8j-9fgh-g6k2-ai8jcj0k7j8i^|^{reference:"Ref345",revoked:false,suspendedUntil:"2023-08-30",endDate:null}^|^400^|^
+dk1l8k9j-ej9k-aghi-h7l3-bj9kdk1l8k9j^|^{reference:null,revoked:true,suspendedUntil:null,endDate:"2025-02-20"}^|^200^|^

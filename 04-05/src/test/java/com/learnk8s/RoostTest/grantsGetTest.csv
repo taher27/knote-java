@@ -1,0 +1,11 @@
+RequestBody^|^statusCode^|^Token
+{"userId":1,"userName":"JohnDoe","userEmail":"john.doe@example.com"}^|^200^|^abc123token
+{"userId":2,"userName":"JaneSmith","userEmail":"jane.smith@example.com"}^|^200^|^def456token
+{"userId":3,"userName":"AliceJones","userEmail":"alice.jones@example.com"}^|^200^|^ghi789token
+{"userId":4,"userName":"BobBrown","userEmail":"bob.brown@example.com"}^|^401^|^jkl012token
+{"userId":5,"userName":"CharlieBlack","userEmail":"charlie.black@example.com"}^|^200^|^mno345token
+{"userId":6,"userName":"DianaGreen","userEmail":"diana.green@example.com"}^|^200^|^pqr678token
+{"userId":7,"userName":"EvanWhite","userEmail":"evan.white@example.com"}^|^401^|^stu901token
+{"userId":8,"userName":"FionaGray","userEmail":"fiona.gray@example.com"}^|^200^|^vwx234token
+{"userId":9,"userName":"GeorgeLime","userEmail":"george.lime@example.com"}^|^200^|^yzb567token
+{"userId":10,"userName":"HannahPink","userEmail":"hannah.pink@example.com"}^|^401^|^cde890token

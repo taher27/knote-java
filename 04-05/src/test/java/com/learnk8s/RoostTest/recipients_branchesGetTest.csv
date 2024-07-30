@@ -1,0 +1,11 @@
+coc-number^|^coc-branch-number^|^trade-name^|^size^|^offset^|^RequestBody^|^statusCode^|^Token
+12345678^|^123456789012^|^Alpha Corp^|^25^|^0^|^{"action":"create","data":{"name":"Alpha Corp","size":25}}^|^200^|^ABC123TOKEN456XYZ
+87654321^|^210987654321^|^Beta LLC^|^15^|^1^|^{"action":"update","data":{"name":"Beta LLC","size":15}}^|^200^|^XYZ789TOKEN123ABC
+23456789^|^345678901234^|^Gamma Inc^|^40^|^2^|^{"action":"delete","data":{"name":"Gamma Inc","size":40}}^|^400^|^LMN456TOKEN789GHI
+98765432^|^432109876543^|^Delta Ltd^|^30^|^3^|^{"action":"view","data":{"name":"Delta Ltd","size":30}}^|^401^|^OPQ123TOKEN456STU
+34567890^|^567890123456^|^Epsilon Plc^|^20^|^4^|^{"action":"create","data":{"name":"Epsilon Plc","size":20}}^|^200^|^VWX789TOKEN123DEF
+65432198^|^678901234567^|^Zeta GmbH^|^10^|^5^|^{"action":"update","data":{"name":"Zeta GmbH","size":10}}^|^200^|^GHI456TOKEN789JKL
+56789012^|^789012345678^|^Eta SA^|^35^|^6^|^{"action":"delete","data":{"name":"Eta SA","size":35}}^|^400^|^MNO123TOKEN456PQR
+43219876^|^890123456789^|^Theta LLC^|^50^|^7^|^{"action":"view","data":{"name":"Theta LLC","size":50}}^|^401^|^STU789TOKEN123VWX
+67890123^|^901234567890^|^Iota Inc^|^5^|^8^|^{"action":"create","data":{"name":"Iota Inc","size":5}}^|^200^|^YZA123TOKEN456BCD
+89012345^|^012345678901^|^Kappa Co^|^45^|^9^|^{"action":"update","data":{"name":"Kappa Co","size":45}}^|^200^|^CDE456TOKEN789FGH

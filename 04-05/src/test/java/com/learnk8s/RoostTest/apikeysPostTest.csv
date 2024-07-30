@@ -1,0 +1,11 @@
+RequestBody^|^statusCode^|^Token
+{"userId":1,"info":{"name":"John Doe","email":"john.doe@example.com"}}^|^201^|^a1b2c3d4e5
+{"userId":2,"info":{"name":"Jane Smith","email":"jane.smith@example.com"}}^|^400^|^f6g7h8i9j0
+{"userId":3,"info":{"name":"Alice Johnson","email":"alice.johnson@example.com"}}^|^401^|^k1l2m3n4o5
+{"userId":4,"info":{"name":"Dave Wilson","email":"dave.wilson@example.com"}}^|^201^|^p6q7r8s9t0
+{"userId":5,"info":{"name":"Mike Brown","email":"mike.brown@example.com"}}^|^400^|^u1v2w3x4y5
+{"userId":6,"info":{"name":"Chloe Davis","email":"chloe.davis@example.com"}}^|^401^|^z6a7b8c9d0
+{"userId":7,"info":{"name":"Ethan Taylor","email":"ethan.taylor@example.com"}}^|^201^|^e1f2g3h4i5
+{"userId":8,"info":{"name":"Sophia Martinez","email":"sophia.martinez@example.com"}}^|^400^|^j6k7l8m9n0
+{"userId":9,"info":{"name":"Liam Anderson","email":"liam.anderson@example.com"}}^|^401^|^o1p2q3r4s5
+{"userId":10,"info":{"name":"Olivia Thomas","email":"olivia.thomas@example.com"}}^|^201^|^t6u7v8w9x0

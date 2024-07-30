@@ -1,0 +1,11 @@
+id^|^credential-url^|^size^|^offset^|^RequestBody^|^statusCode^|^Token
+d53f5604-4bfc-4d89-a31a-e25b3a7b76a2^|^http://example.com/credential/123^|^20^|^0^|^{ "action": "login", "username": "user123" }^|^200^|^abc123token
+b63f5403-3cfa-4d12-a21b-d35c2a4b75b3^|^http://example.com/credential/456^|^15^|^5^|^{ "action": "register", "email": "user456@example.com" }^|^200^|^def456token
+a73f5202-2bfb-4d11-a11c-c46b2a3b74b4^|^http://example.com/credential/789^|^30^|^10^|^{ "action": "update", "userId": "789" }^|^200^|^ghi789token
+c83f5101-1bea-4d10-a10d-d57b1a2b73b5^|^http://example.com/credential/012^|^25^|^15^|^{ "action": "delete", "userId": "012" }^|^400^|^jkl012token
+e93f5000-0bd9-4d0f-a00e-e68a0a2b72b6^|^http://example.com/credential/345^|^10^|^20^|^{ "action": "search", "query": "foo" }^|^401^|^mno345token
+f03f5f0f-0acf-4d0e-a00f-f79a9a2b71b7^|^http://example.com/credential/678^|^45^|^25^|^{ "action": "logout", "username": "user678" }^|^200^|^pqr678token
+a13f5e1e-1a9f-4d0d-a01b-f88a8a2b70b8^|^http://example.com/credential/901^|^35^|^30^|^{ "action": "fetch", "userId": "901" }^|^400^|^stu901token
+b23f5d1d-2a8e-4d0c-a02c-g97a7a2b69b9^|^http://example.com/credential/234^|^50^|^35^|^{ "action": "sync", "deviceId": "234device" }^|^401^|^vwx234token
+c33f5c1c-3a7d-4d0b-a03d-h86a6a2b68ba^|^http://example.com/credential/567^|^40^|^40^|^{ "action": "verify", "token": "567token" }^|^200^|^yz567token
+d43f5b1b-4a6c-4d0a-a04e-i75a5a2b67bb^|^http://example.com/credential/890^|^5^|^45^|^{ "action": "refresh", "sessionId": "890session" }^|^200^|^abc890token
