@@ -1,0 +1,3 @@
+size,offset,recipient_id,credential_url
+"20","0","'d290f1ee-6c54-4b01-90e6-d701748f0851'","'http://example.com/cred'"
+"10","5","'e229fa5a-d4f9-42bb-a6d7-2f40b5c4d5ff'","'https://another.com/cred'"

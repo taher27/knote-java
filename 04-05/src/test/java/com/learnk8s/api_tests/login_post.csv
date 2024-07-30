@@ -1,0 +1,5 @@
+email,otp,client
+"'user@example.com'","'123456'","'mobile'"
+"'user@example.com'","'123456'","'web'"
+"'user@example.com'","'123456'","'desktop'"
+"'user@example.com'","'123456'","'api'"

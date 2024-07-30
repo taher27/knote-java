@@ -1,0 +1,4 @@
+size,offset,name,birth_date
+"20","0","'John Doe'","'1990-01-01'"
+"10","5","'Jane Doe'","'1985-05-05'"
+"null","null","null","null"

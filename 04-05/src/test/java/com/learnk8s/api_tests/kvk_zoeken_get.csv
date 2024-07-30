@@ -1,0 +1,4 @@
+kvkNummer,vestigingsnummer,handelsnaam,expectedResponse
+"'123456'","'123456789'","'KarateTest'","'See kvk OAS specs'"
+"null","'987654321'","'KarateAPI'","'See kvk OAS specs'"
+"'654321'","null","null","'See kvk OAS specs'"
