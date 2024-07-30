@@ -1,0 +1,6 @@
+kvkNummer,vestigingsnummer,handelsnaam,statusCode,scenario
+12345678,1234567890,"Handelsnaam A",200,"successful operation"
+23456789,2345678901,"Handelsnaam B",200,"successful operation"
+34567890,3456789012,"Handelsnaam C",200,"successful operation"
+45678901,4567890123,"Handelsnaam D",200,"successful operation"
+56789012,5678901234,"Handelsnaam E",200,"successful operation"

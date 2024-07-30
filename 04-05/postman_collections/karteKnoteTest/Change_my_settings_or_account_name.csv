@@ -1,0 +1,4 @@
+name,image,dolor_1,statusCode,scenario
+"}} L .-pLL-  .{L{LL LL","https://cdn.credentialregiater.com/2571c54e-2cde-4434-83f2-c329f74adc27.png",43082647,200,successful operation
+"Random Name 1","data:image/jpeg;base64,InvalidBase64==",Random Error 1,400,Bad Request
+"Random Name 2","data:image/jpeg;base64,InvalidBase64==",Random Error 2,401,Authentication Required

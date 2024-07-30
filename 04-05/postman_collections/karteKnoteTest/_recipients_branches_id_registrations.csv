@@ -1,0 +1,5 @@
+credential-url,size,offset,id,statusCode,scenario
+"T7:~v48tFlUg",10,0,"8d8c94b3-d152-d26b-3305-a815108ff136",200,"successful operation"
+"s8aPezg2cL:9rYRdz",20,10,"779de73b-1639-27a6-240b-2cb584467007",200,"successful operation"
+"InvalidURL",30,20,"random-uuid-1",400,"Bad Request"
+"InvalidURL",40,30,"random-uuid-2",401,"Authentication Required"

@@ -1,0 +1,4 @@
+id,tradeName,phone,email,statusCode,scenario
+"0a099564-0a62-de1b-d0ba-2bb936060000","Successful Trade Inc","123-456-7890","success@example.com",200,successful operation
+"1b199865-1c73-fe2c-e1cb-3cc947070111","Invalid Trade LLC","456-789-0123","badrequest@example.com",400,Bad Request
+"2c299976-2d84-gf3d-f2dc-4dd958080222","Unauthorized Trade AG","789-012-3456","unauth@example.com",401,Authentication Required

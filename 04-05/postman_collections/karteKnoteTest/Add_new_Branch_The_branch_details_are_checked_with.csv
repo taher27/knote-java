@@ -1,0 +1,5 @@
+cocNumber,cocBranchNumber,city,tradeName,phone,email,statusCode,scenario
+"12345678","123456789012","Amsterdam","TradeCorp","0201234567","info@tradecorp.com",200,"successful operation, existing branch returned"
+"12345678","123456789012","Rotterdam","GlobalTrade","0107654321","contact@globaltrade.com",201,"successful operation, branch created"
+"87654321","210987654321","InvalidCity","<string>","123","not-an-email",400,"Bad Request"
+"87654321","210987654321","InvalidCity","<string>","123","user@@example.com",401,"Authentication Required"
