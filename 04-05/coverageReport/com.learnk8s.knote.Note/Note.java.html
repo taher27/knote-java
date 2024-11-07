@@ -14,16 +14,13 @@ import lombok.Setter;
 <span class="fc" id="L14">@NoArgsConstructor</span>
 <span class="fc" id="L15">@AllArgsConstructor</span>
 public class Note {
+    @Id
+<span class="nc" id="L18">    private String id;</span>
+<span class="nc" id="L19">    private String description;</span>
 
-	@Id
-<span class="nc" id="L19">	private String id;</span>
-
-<span class="nc" id="L21">	private String description;</span>
-
-	@Override
-	public String toString() {
-<span class="fc" id="L25">		return description;</span>
-	}
-
+    @Override
+    public String toString() {
+<span class="fc" id="L23">        return description;</span>
+    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

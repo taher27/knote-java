@@ -9,19 +9,20 @@ import org.springframework.web.servlet.resource.PathResourceResolver;
 
 @Configuration
 @EnableConfigurationProperties(KnoteProperties.class)
-<span class="fc" id="L12">public class KnoteConfig implements WebMvcConfigurer {</span>
+<span class="fc" id="L12">public class KnoteConfig implements WebMvcConfigurer{</span>
 
-	@Autowired
-	private KnoteProperties properties;
+    @Autowired
+    private KnoteProperties properties;
 
-	@Override
-	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-<span class="fc" id="L19">		registry.addResourceHandler(&quot;/uploads/**&quot;)</span>
-<span class="fc" id="L20">			.addResourceLocations(&quot;file:&quot; + properties.getUploadDir())</span>
-<span class="fc" id="L21">			.setCachePeriod(3600)</span>
-<span class="fc" id="L22">			.resourceChain(true)</span>
-<span class="fc" id="L23">			.addResolver(new PathResourceResolver());</span>
-<span class="fc" id="L24">	}</span>
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+<span class="fc" id="L19">        registry</span>
+<span class="fc" id="L20">                .addResourceHandler(&quot;/uploads/**&quot;)</span>
+<span class="fc" id="L21">                .addResourceLocations(&quot;file:&quot; + properties.getUploadDir())</span>
+<span class="fc" id="L22">                .setCachePeriod(3600)</span>
+<span class="fc" id="L23">                .resourceChain(true)</span>
+<span class="fc" id="L24">                .addResolver(new PathResourceResolver());</span>
+<span class="fc" id="L25">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

@@ -5,13 +5,11 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @ConfigurationProperties(prefix = &quot;knote&quot;)
 <span class="fc" id="L7">public class KnoteProperties {</span>
+    @Value(&quot;${uploadDir:/tmp/uploads/}&quot;)
+    private String uploadDir;
 
-	@Value(&quot;${uploadDir:/tmp/uploads/}&quot;)
-	private String uploadDir;
-
-	public String getUploadDir() {
-<span class="fc" id="L13">		return uploadDir;</span>
-	}
-
+    public String getUploadDir() {
+<span class="fc" id="L12">        return uploadDir;</span>
+    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

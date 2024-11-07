@@ -30,108 +30,112 @@ import org.commonmark.renderer.html.HtmlRenderer;
 @Controller
 <span class="fc" id="L31">public class KnoteController {</span>
 
-	@Autowired
-	private NotesRepository notesRepository;
+    @Autowired
+    private NotesRepository notesRepository;
 
-	@Autowired
-	private KnoteProperties properties;
+    @Autowired
+    private KnoteProperties properties;
 
-<span class="fc" id="L39">	private Parser parser = Parser.builder().build();</span>
+<span class="fc" id="L39">    private Parser parser = Parser.builder().build();</span>
+<span class="fc" id="L40">    private HtmlRenderer renderer = HtmlRenderer.builder().build();</span>
 
-<span class="fc" id="L41">	private HtmlRenderer renderer = HtmlRenderer.builder().build();</span>
 
-	@GetMapping(&quot;/&quot;)
-	public ResponseEntity&lt;List&lt;Note&gt;&gt; index(Model model) {
-		// System.out.println(&quot;+++++++++++++++++++++++++++&quot;+model.toString());
-<span class="fc" id="L46">		List&lt;Note&gt; notes = getAllNotes(model);</span>
-<span class="fc" id="L47">		return ResponseEntity.ok(notes);</span>
+    @GetMapping(&quot;/&quot;)
+    public ResponseEntity&lt;List&lt;Note&gt;&gt; index(Model model) {
+		//System.out.println(&quot;+++++++++++++++++++++++++++&quot;+model.toString());
+<span class="fc" id="L46">        List&lt;Note&gt; notes=getAllNotes(model);</span>
+<span class="fc" id="L47">        return ResponseEntity.ok(notes);</span>
 		// return &quot;index&quot;;
-	}
+    }
 
-	@PostMapping(&quot;/note&quot;)
-	public ResponseEntity&lt;HttpStatusCode&gt; saveNotes(@RequestParam(&quot;image&quot;) MultipartFile file,
-			@RequestParam String description, @RequestParam(required = false) String publish,
-			@RequestParam(required = false) String upload, Model model) throws Exception {
+    @PostMapping(&quot;/note&quot;)
+    public ResponseEntity&lt;HttpStatusCode&gt; saveNotes(@RequestParam(&quot;image&quot;) MultipartFile file,
+                            @RequestParam String description,
+                            @RequestParam(required = false) String publish,
+                            @RequestParam(required = false) String upload,
+                            Model model) throws Exception {
 
-		// System.out.println(&quot;ljnkjnwojbjwbcowb&quot;+file.getOriginalFilename());
+		//System.out.println(&quot;ljnkjnwojbjwbcowb&quot;+file.getOriginalFilename());
 
-		// ResponseType response = new ResponseType();
-		// String[] responseDescription = new String[2];
+        // ResponseType response = new ResponseType();
+        // String[] responseDescription = new String[2];
 
-<span class="nc bnc" id="L61" title="All 4 branches missed.">		if (upload == null &amp;&amp; publish == null) {</span>
-<span class="nc" id="L62">			return ResponseEntity.ok(HttpStatus.BAD_REQUEST);</span>
-			// responseDescription[0]=&quot;Either Opt for \&quot;Publish\&quot; or \&quot;Upload\&quot;&quot;;
-			// response.setResponseDescription(responseDescription);
-			// response.setStatusCode(HttpStatus.BAD_REQUEST);
-			// return response;
+<span class="nc bnc" id="L63" title="All 4 branches missed.">        if(upload==null&amp;&amp;publish==null){</span>
+<span class="nc" id="L64">            return ResponseEntity.ok(HttpStatus.BAD_REQUEST);</span>
+            // responseDescription[0]=&quot;Either Opt for \&quot;Publish\&quot; or \&quot;Upload\&quot;&quot;;
+            // response.setResponseDescription(responseDescription);
+            // response.setStatusCode(HttpStatus.BAD_REQUEST);
+            // return response;
 		}
 
-<span class="nc bnc" id="L69" title="All 4 branches missed.">		if (upload != null &amp;&amp; upload.equals(&quot;Upload&quot;)) {</span>
-<span class="nc bnc" id="L70" title="All 6 branches missed.">			if (file != null &amp;&amp; file.getOriginalFilename() != null &amp;&amp; !file.getOriginalFilename().isEmpty()) {</span>
-<span class="nc" id="L71">				uploadImage(file, description, model);</span>
-			}
-			else {
-<span class="nc" id="L74">				return ResponseEntity.ok(HttpStatus.BAD_REQUEST);</span>
-				// response.setStatusCode(HttpStatus.BAD_REQUEST);
-				// responseDescription[0]=&quot;invalid file&quot;;
-				// response.setResponseDescription(responseDescription);
-				// return response;
-			}
-			// responseDescription[0]=(&quot;image: &quot;+file.getOriginalFilename()+&quot; is
-			// sucessfully uploaded&quot;);
+<span class="nc bnc" id="L71" title="All 4 branches missed.">        if (upload != null &amp;&amp; upload.equals(&quot;Upload&quot;)) {</span>
+<span class="nc bnc" id="L72" title="All 4 branches missed.">            if (file != null &amp;&amp; file.getOriginalFilename() != null &amp;&amp;</span>
+<span class="nc bnc" id="L73" title="All 2 branches missed.">                    !file.getOriginalFilename().isEmpty()) {</span>
+<span class="nc" id="L74">                uploadImage(file, description, model);</span>
+            }
+            else{
+<span class="nc" id="L77">                return ResponseEntity.ok(HttpStatus.BAD_REQUEST);</span>
+            //     response.setStatusCode(HttpStatus.BAD_REQUEST);
+            //    responseDescription[0]=&quot;invalid file&quot;;
+            //     response.setResponseDescription(responseDescription);
+            //     return response;
+            }
+           // responseDescription[0]=(&quot;image: &quot;+file.getOriginalFilename()+&quot; is sucessfully uploaded&quot;);
 
-			// return &quot;index&quot;;
-		}
+           // return &quot;index&quot;;
+        }
 
-<span class="nc bnc" id="L86" title="All 4 branches missed.">		if (publish != null &amp;&amp; publish.equals(&quot;Publish&quot;)) {</span>
-<span class="nc" id="L87">			saveNote(description, model);</span>
-			// responseDescription[1]=(&quot;note saved..... note description:
-			// &quot;+note.getDescription());
+<span class="nc bnc" id="L88" title="All 4 branches missed.">        if (publish != null &amp;&amp; publish.equals(&quot;Publish&quot;)) {</span>
+<span class="nc" id="L89">            saveNote(description, model);</span>
+            //responseDescription[1]=(&quot;note saved.....    note description: &quot;+note.getDescription());
 
-			// return &quot;redirect:/&quot;;
-		}
+           // return &quot;redirect:/&quot;;
+        }
 
-		// response.setStatusCode(HttpStatus.CREATED);
-		// response.setResponseDescription(responseDescription);
-		// response.setObject(getAllNotes(model));
-		// response.setObject(getAllNotes(model));
+        // response.setStatusCode(HttpStatus.CREATED);
+        // response.setResponseDescription(responseDescription);
+        // response.setObject(getAllNotes(model));
+        // response.setObject(getAllNotes(model));
 
-		// return response;
+		//return response;
 
-<span class="nc" id="L101">		return ResponseEntity.ok(HttpStatus.CREATED);</span>
-	}
+<span class="nc" id="L102">        return ResponseEntity.ok(HttpStatus.CREATED);</span>
+    }
 
-	private List&lt;Note&gt; getAllNotes(Model model) {
-<span class="fc" id="L105">		List&lt;Note&gt; notes = notesRepository.findAll();</span>
-<span class="fc" id="L106">		Collections.reverse(notes);</span>
-<span class="fc" id="L107">		model.addAttribute(&quot;notes&quot;, notes);</span>
-<span class="fc" id="L108">		return notes;</span>
-	}
 
-	private void uploadImage(MultipartFile file, String description, Model model) throws Exception {
+    private List&lt;Note&gt;  getAllNotes(Model model) {
+<span class="fc" id="L107">        List&lt;Note&gt; notes = notesRepository.findAll();</span>
+<span class="fc" id="L108">        Collections.reverse(notes);</span>
+<span class="fc" id="L109">		model.addAttribute(&quot;notes&quot;, notes);</span>
+<span class="fc" id="L110">		return notes;</span>
+    }
 
-<span class="nc" id="L113">		File uploadsDir = new File(properties.getUploadDir());</span>
-<span class="nc bnc" id="L114" title="All 2 branches missed.">		if (!uploadsDir.exists()) {</span>
-<span class="nc" id="L115">			uploadsDir.mkdir();</span>
-		}
-<span class="nc" id="L117">		String fileId = UUID.randomUUID().toString() + &quot;.&quot; + file.getOriginalFilename().split(&quot;\\.&quot;)[1];</span>
-<span class="nc" id="L118">		file.transferTo(new File(uploadsDir.getAbsolutePath() + fileId));</span>
-		// System.out.println(&quot;image directory: -----------&gt;
-		// &quot;+(uploadsDir.getAbsolutePath() + fileId).toString());
-<span class="nc" id="L121">		model.addAttribute(&quot;description&quot;, description + &quot; ![](/uploads/&quot; + fileId + &quot;)&quot;);</span>
+    private void uploadImage(MultipartFile file, String description, Model model) throws Exception {
 
-<span class="nc" id="L123">	}</span>
+<span class="nc" id="L115">		File uploadsDir = new File(properties.getUploadDir());</span>
+<span class="nc bnc" id="L116" title="All 2 branches missed.">        if (!uploadsDir.exists()) {</span>
+<span class="nc" id="L117">            uploadsDir.mkdir();</span>
+        }
+<span class="nc" id="L119">        String fileId = UUID.randomUUID().toString() + &quot;.&quot; +</span>
+<span class="nc" id="L120">                          file.getOriginalFilename().split(&quot;\\.&quot;)[1];</span>
+<span class="nc" id="L121">        file.transferTo(new File(uploadsDir.getAbsolutePath() + fileId));</span>
+		//System.out.println(&quot;image directory: -----------&gt;   &quot;+(uploadsDir.getAbsolutePath() + fileId).toString());
+<span class="nc" id="L123">        model.addAttribute(&quot;description&quot;,</span>
+                description + &quot; ![](/uploads/&quot; + fileId + &quot;)&quot;);
+				
+<span class="nc" id="L126">    }</span>
 
-	private void saveNote(String description, Model model) {
-<span class="nc bnc" id="L126" title="All 4 branches missed.">		if (description != null &amp;&amp; !description.trim().isEmpty()) {</span>
-			// We need to translate markup to HTML
-<span class="nc" id="L128">			org.commonmark.node.Node document = parser.parse(description.trim());</span>
-<span class="nc" id="L129">			String html = renderer.render(document);</span>
-<span class="nc" id="L130">			notesRepository.save(new Note(null, html));</span>
-			// After publish you need to clean up the textarea
-<span class="nc" id="L132">			model.addAttribute(&quot;description&quot;, &quot;&quot;);</span>
-		}
-<span class="nc" id="L134">	}</span>
+    private void saveNote(String description, Model model) {
+<span class="nc bnc" id="L129" title="All 4 branches missed.">        if (description != null &amp;&amp; !description.trim().isEmpty()) {</span>
+            //We need to translate markup to HTML
+<span class="nc" id="L131">            org.commonmark.node.Node document = parser.parse(description.trim());</span>
+<span class="nc" id="L132">            String html = renderer.render(document);</span>
+<span class="nc" id="L133">            notesRepository.save(new Note(null, html));</span>
+            //After publish you need to clean up the textarea
+<span class="nc" id="L135">            model.addAttribute(&quot;description&quot;,&quot;&quot;);</span>
+        }
+<span class="nc" id="L137">    }</span>
 
 }
+
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
