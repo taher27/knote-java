@@ -57,6 +57,8 @@ Validation:
 ```
 
 roost_feedback [11/7/2024, 12:15:08 PM]:- Improve assertions
+
+roost_feedback [11/7/2024, 12:23:08 PM]:- Format the test
 */
 
 // ********RoostGPT********
@@ -100,41 +102,41 @@ import org.commonmark.renderer.html.HtmlRenderer;
 @ExtendWith(MockitoExtension.class)
 public class KnoteControllerIndexTest {
 
-	@Mock
-	private NotesRepository notesRepository;
+    @Mock
+    private NotesRepository notesRepository;
 
-	@Mock
-	private Model model;
+    @Mock
+    private Model model;
 
-	@InjectMocks
-	private KnoteController knoteController;
+    @InjectMocks
+    private KnoteController knoteController;
 
-	private List<Note> mockNotes;
+    private List<Note> mockNotes;
 
-	@BeforeEach
-	void setUp() {
-		mockNotes = Arrays.asList(new Note("Note 1", "Content 1"), new Note("Note 2", "Content 2"));
-	}
+    @BeforeEach
+    void setUp() {
+        mockNotes = Arrays.asList(new Note("Note 1", "Content 1"), new Note("Note 2", "Content 2"));
+    }
 
-	@Test
+    @Test
     @Tag("valid")
     public void testSuccessfulRetrievalOfNotes() {
         when(notesRepository.findAll()).thenReturn(mockNotes);
         ResponseEntity<List<Note>> response = knoteController.index(model);
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(mockNotes, response.getBody());
+        assertEquals(HttpStatus.OK, response.getStatusCode(), "Expected HTTP status OK.");
+        assertEquals(mockNotes, response.getBody(), "Expected body to match the mock notes.");
     }
 
-	@Test
+    @Test
     @Tag("valid")
     public void testEmptyListOfNotes() {
         when(notesRepository.findAll()).thenReturn(Collections.emptyList());
         ResponseEntity<List<Note>> response = knoteController.index(model);
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(Collections.emptyList(), response.getBody());
+        assertEquals(HttpStatus.OK, response.getStatusCode(), "Expected HTTP status OK for empty notes.");
+        assertEquals(Collections.emptyList(), response.getBody(), "Expected body to be an empty list.");
     }
 
-	@Test
+    @Test
     @Tag("integration")
     public void testModelAttributesUpdateDuringNoteRetrieval() {
         when(notesRepository.findAll()).thenReturn(mockNotes);
@@ -142,7 +144,7 @@ public class KnoteControllerIndexTest {
         verify(model).addAttribute("notes", mockNotes);
     }
 
-	@Test
+    @Test
     @Tag("integration")
     public void testNotesRepositoryInteraction() {
         when(notesRepository.findAll()).thenReturn(mockNotes);
