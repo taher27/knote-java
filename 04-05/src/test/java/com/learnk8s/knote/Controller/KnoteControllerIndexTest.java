@@ -55,6 +55,8 @@ Execution:
 Validation:
   Ensuring that the NotesRepository is called exactly once per method execution is important for performance reasons and to avoid unnecessary data fetching, which could impact application responsiveness and resource usage.
 ```
+
+roost_feedback [11/7/2024, 12:15:08 PM]:- Improve assertions
 */
 
 // ********RoostGPT********
@@ -119,7 +121,8 @@ public class KnoteControllerIndexTest {
     public void testSuccessfulRetrievalOfNotes() {
         when(notesRepository.findAll()).thenReturn(mockNotes);
         ResponseEntity<List<Note>> response = knoteController.index(model);
-        assertEquals(ResponseEntity.ok(mockNotes), response);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(mockNotes, response.getBody());
     }
 
 	@Test
@@ -127,7 +130,8 @@ public class KnoteControllerIndexTest {
     public void testEmptyListOfNotes() {
         when(notesRepository.findAll()).thenReturn(Collections.emptyList());
         ResponseEntity<List<Note>> response = knoteController.index(model);
-        assertEquals(ResponseEntity.ok(Collections.emptyList()), response);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(Collections.emptyList(), response.getBody());
     }
 
 	@Test
