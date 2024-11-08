@@ -59,6 +59,8 @@ Validation:
 roost_feedback [11/7/2024, 12:15:08 PM]:- Improve assertions
 
 roost_feedback [11/7/2024, 12:23:08 PM]:- Format the test
+
+roost_feedback [11/8/2024, 4:59:06 AM]:Add More Test functions
 */
 
 // ********RoostGPT********
@@ -82,22 +84,8 @@ import java.util.List;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.verify;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.client.HttpClientErrorException.BadRequest;
-import org.springframework.web.multipart.MultipartFile;
-import com.learnk8s.knote.UploadConfig.KnoteProperties;
-import io.micrometer.core.ipc.http.HttpSender.Response;
-import java.io.File;
-import java.util.UUID;
-import org.commonmark.parser.Parser;
-import org.commonmark.renderer.html.HtmlRenderer;
 
 @ExtendWith(MockitoExtension.class)
 public class KnoteControllerIndexTest {
@@ -152,4 +140,24 @@ public class KnoteControllerIndexTest {
         verify(notesRepository).findAll();
     }
 
+    @Test
+    @Tag("performance")
+    public void testPerformanceUnderHeavyLoad() {
+        when(notesRepository.findAll()).thenReturn(mockNotes);
+        for (int i = 0; i < 1000; i++) {
+            ResponseEntity<List<Note>> response = knoteController.index(model);
+            assertEquals(HttpStatus.OK, response.getStatusCode(), "Expected HTTP status OK under heavy load.");
+            assertEquals(mockNotes, response.getBody(), "Expected body to match the mock notes under heavy load.");
+        }
+    }
+
+    @Test
+    @Tag("security")
+    public void testSecurityAccessControl() {
+        when(notesRepository.findAll()).thenThrow(new SecurityException("Access Denied"));
+        Exception exception = assertThrows(SecurityException.class, () -> {
+            knoteController.index(model);
+        });
+        assertTrue(exception.getMessage().contains("Access Denied"), "Expected access denied message.");
+    }
 }
