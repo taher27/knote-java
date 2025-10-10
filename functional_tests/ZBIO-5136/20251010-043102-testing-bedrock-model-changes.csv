@@ -1,0 +1,13 @@
+TC-001 Validate Current Unpaid Credit Card Balance
+TC-002 Verify Payment Due Date Accuracy
+TC-003 Past Due Payment Automated Call Trigger
+TC-004 Card Payment Collection Process
+TC-005 Balance Update After Payment
+TC-006 Handle Overpayment Scenario
+TC-007 Invalid Payment Card Rejection
+TC-008 New Card Zero Balance Verification
+TC-009 Card Balance Retrieval Response Time
+TC-010 Concurrent User Load Test for Balance Checking
+TC-011 Automated Call System Reliability Test
+TC-012 Payment Collection Security Assessment
+TC-013 Disaster Recovery for Payment Collection System
