@@ -1,0 +1,64 @@
+{
+  "scenarios": [
+    {
+      "type": "functional",
+      "title": "Verify Unpaid Credit Card Balance",
+      "description": "Ensure the system correctly displays the unpaid credit card balance after the payment due date.",
+      "testId": "TC-001",
+      "testDescription": "Check if the system accurately shows the unpaid balance for a credit card after the payment due date has passed.",
+      "prerequisites": "A credit card account with an unpaid balance and a passed due date.",
+      "stepsToPerform": "1. Log into the credit card management system.\n2. Navigate to the card balance section.\n3. Locate the specific credit card account.\n4. View the displayed unpaid balance.",
+      "expectedResult": "The system should display the correct unpaid balance for the credit card, matching the amount that was not paid by the due date."
+    },
+    {
+      "type": "functional",
+      "title": "Automated Call Trigger for Overdue Payment",
+      "description": "Verify that the system initiates an automated call when a credit card payment is overdue.",
+      "testId": "TC-002",
+      "testDescription": "Ensure the system automatically triggers a call to the customer when the credit card payment due date has passed without payment.",
+      "prerequisites": "A credit card account with an unpaid balance and a recently passed due date.",
+      "stepsToPerform": "1. Simulate the passing of the payment due date for a test account.\n2. Wait for the system to process overdue accounts (this may be an overnight process).\n3. Check the system logs or call center queue for an automated call trigger.",
+      "expectedResult": "The system should generate an automated call to the customer's registered phone number for payment collection."
+    },
+    {
+      "type": "functional",
+      "title": "Card Payment Collection Process",
+      "description": "Test the entire card payment collection process for an overdue balance.",
+      "testId": "TC-003",
+      "testDescription": "Verify that the system can successfully process a payment for an overdue credit card balance.",
+      "prerequisites": "A credit card account with an overdue balance and customer's payment information.",
+      "stepsToPerform": "1. Access the payment collection system.\n2. Locate the overdue credit card account.\n3. Initiate the payment collection process.\n4. Enter valid payment details (e.g., bank account or another credit card).\n5. Confirm and submit the payment.\n6. Wait for payment processing to complete.\n7. Check the updated card balance.",
+      "expectedResult": "The payment should be processed successfully, and the credit card's unpaid balance should be reduced by the payment amount. The system should generate a payment confirmation."
+    },
+    {
+      "type": "functional",
+      "title": "Balance Update After Partial Payment",
+      "description": "Ensure the system correctly updates the card balance after a partial payment of the overdue amount.",
+      "testId": "TC-004",
+      "testDescription": "Verify that when a customer makes a partial payment on an overdue balance, the system accurately updates the remaining balance.",
+      "prerequisites": "A credit card account with an overdue balance greater than the minimum payment due.",
+      "stepsToPerform": "1. Access the payment collection system.\n2. Locate the overdue credit card account.\n3. Process a partial payment (more than the minimum but less than the full balance).\n4. Wait for payment processing to complete.\n5. Check the updated card balance.",
+      "expectedResult": "The system should deduct the partial payment from the overdue balance and display the correct remaining balance. It should also update the account status if the minimum payment was met."
+    },
+    {
+      "type": "non-functional",
+      "title": "Payment Processing Performance",
+      "description": "Evaluate the system's performance in processing multiple card payments simultaneously.",
+      "testId": "TC-005",
+      "testDescription": "Test the system's ability to handle concurrent payment processing for multiple overdue credit card accounts without significant delay.",
+      "prerequisites": "Multiple test credit card accounts with overdue balances and simulated payment data.",
+      "stepsToPerform": "1. Prepare a batch of at least 100 simulated payment transactions.\n2. Initiate the payment processing for all transactions simultaneously.\n3. Monitor the system's response time and resource utilization.\n4. Record the time taken to process all transactions.\n5. Verify each transaction's success and accuracy.",
+      "expectedResult": "The system should process all payments within an acceptable time frame (e.g., less than 5 minutes for 100 transactions). There should be no errors, and all balances should be updated correctly."
+    },
+    {
+      "type": "non-functional",
+      "title": "Data Security in Payment Collection",
+      "description": "Verify the security measures in place for protecting sensitive payment information during the collection process.",
+      "testId": "TC-006",
+      "testDescription": "Ensure that all payment data transmitted during the collection process is encrypted and securely stored.",
+      "prerequisites": "Access to the payment collection system and network monitoring tools.",
+      "stepsToPerform": "1. Initiate a payment collection process for an overdue account.\n2. Use network monitoring tools to capture the data transmission.\n3. Attempt to intercept and read the payment information.\n4. Check the database storage for payment records.\n5. Attempt to access stored payment information directly from the database.",
+      "expectedResult": "All transmitted data should be encrypted and unreadable when intercepted. Stored payment information in the database should be encrypted or tokenized. Direct access to sensitive payment data should be restricted and logged."
+    }
+  ]
+}
