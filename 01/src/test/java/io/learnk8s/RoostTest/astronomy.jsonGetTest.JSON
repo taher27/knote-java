@@ -1,0 +1,197 @@
+[
+  {
+    "description": "Test a valid request with proper query params",
+    "request_header": {
+      "Authorization": "${AUTH_TOKEN}"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "New York",
+      "dt": "2023-05-15"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "location": {
+        "name": "New York",
+        "region": "New York",
+        "country": "United States of America",
+        "lat": 40.71,
+        "lon": -74.01,
+        "tz_id": "America/New_York",
+        "localtime_epoch": 1684154400,
+        "localtime": "2023-05-15 12:00"
+      },
+      "astronomy": {
+        "astro": {
+          "sunrise": "05:37 AM",
+          "sunset": "08:06 PM",
+          "moonrise": "04:12 AM", 
+          "moonset": "05:27 PM",
+          "moon_phase": "Waxing Gibbous",
+          "moon_illumination": "84"
+        }
+      }
+    },
+    "expected_status_code": 200
+  },
+  {
+    "description": "Test request without required 'q' param",
+    "request_header": {
+      "Authorization": "${AUTH_TOKEN}"
+    },
+    "request_body": {},
+    "query_params": {
+      "dt": "2023-05-15"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 1003,
+      "message": "Missing required parameter 'q'"
+    },
+    "expected_status_code": 400
+  },
+  {
+    "description": "Test request with invalid format for 'q' param",
+    "request_header": {
+      "Authorization": "${AUTH_TOKEN}"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "abc123",
+      "dt": "2023-05-15"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 1006,
+      "message": "Invalid 'q' parameter format"
+    },
+    "expected_status_code": 400
+  },
+  {
+    "description": "Test request with invalid data type for 'dt' param",
+    "request_header": {
+      "Authorization": "${AUTH_TOKEN}"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "Boston",
+      "dt": 123456
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 1001,
+      "message": "Invalid parameter value for 'dt'"
+    },
+    "expected_status_code": 400
+  },
+  {
+    "description": "Test request without API key",
+    "request_header": {},
+    "request_body": {},
+    "query_params": {
+      "q": "Chicago",
+      "dt": "2023-05-16"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 1002,
+      "message": "Missing API key" 
+    },
+    "expected_status_code": 401
+  },
+  {
+    "description": "Test request with invalid API key",
+    "request_header": {
+      "Authorization": "invalidToken"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "Miami", 
+      "dt": "2023-05-17"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 2006,
+      "message": "Invalid API key"
+    },
+    "expected_status_code": 401
+  },
+  {
+    "description": "Test request with expired API key",
+    "request_header": {
+      "Authorization": "expiredToken"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "Seattle",
+      "dt": "2023-05-18" 
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 2007,
+      "message": "API key expired"
+    },
+    "expected_status_code": 403
+  },
+  {
+    "description": "Test request with invalid date format for 'dt' param",
+    "request_header": {
+      "Authorization": "${AUTH_TOKEN}"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "London",
+      "dt": "2022/07/22"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 1004,
+      "message": "Invalid date format for 'dt' parameter"
+    },
+    "expected_status_code": 400
+  },
+  {
+    "description": "Test request with 'dt' date before Jan 1, 2015",
+    "request_header": {
+      "Authorization": "${AUTH_TOKEN}"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "Paris",
+      "dt": "2014-12-31"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 1005,
+      "message": "Date requested is before service release date"
+    },
+    "expected_status_code": 400
+  }
+]

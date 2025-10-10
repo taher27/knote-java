@@ -1,0 +1,144 @@
+[
+  {
+    "description": "Test with valid IP and API key",
+    "request_header": {
+      "Authorization": "${AUTH_TOKEN}"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "8.8.8.8"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "ip": "8.8.8.8",
+      "type": "string",
+      "continent_code": "string",
+      "continent_name": "string",
+      "country_code": "string",
+      "country_name": "string",
+      "is_eu": "string",
+      "geoname_id": 0,
+      "city": "string",
+      "region": "string",
+      "lat": 0,
+      "lon": 0,
+      "tz_id": "string",
+      "localtime_epoch": 0,
+      "localtime": "string"
+    },
+    "expected_status_code": 200
+  },
+  {
+    "description": "Test with missing query param",
+    "request_header": {
+      "Authorization": "${AUTH_TOKEN}"
+    },
+    "request_body": {},
+    "query_params": {},
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 1003,
+      "message": "Parameter 'q' not provided"
+    },
+    "expected_status_code": 400
+  },
+  {
+    "description": "Test with invalid IP format",
+    "request_header": {
+      "Authorization": "${AUTH_TOKEN}"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "invalid_ip"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 1006,
+      "message": "No location found matching parameter 'q'"
+    },
+    "expected_status_code": 400
+  },
+  {
+    "description": "Test with missing API key",
+    "request_header": {},
+    "request_body": {},
+    "query_params": {
+      "q": "8.8.8.8"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 1002,
+      "message": "API key not provided"
+    },
+    "expected_status_code": 401
+  },
+  {
+    "description": "Test with invalid API key",
+    "request_header": {
+      "Authorization": "invalid_token"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "8.8.8.8"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 2006,
+      "message": "API key provided is invalid"
+    },
+    "expected_status_code": 401
+  },
+  {
+    "description": "Test with API key exceeding quota",
+    "request_header": {
+      "Authorization": "${EXCEEDED_QUOTA_TOKEN}"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "8.8.8.8"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 2007,
+      "message": "API key has exceeded calls per month quota"
+    },
+    "expected_status_code": 403
+  },
+  {
+    "description": "Test with invalid request URL",
+    "request_header": {
+      "Authorization": "${AUTH_TOKEN}"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "8.8.8.8"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 1005,
+      "message": "API request url is invalid"
+    },
+    "expected_status_code": 400
+  }
+]

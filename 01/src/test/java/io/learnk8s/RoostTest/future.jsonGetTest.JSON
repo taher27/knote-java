@@ -1,0 +1,241 @@
+[
+  {
+    "description": "Valid request with all required and optional parameters",
+    "request_header": {
+      "Authorization": "${AUTH_TOKEN}"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "New York",
+      "dt": "2023-01-01",
+      "lang": "en"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "location": {
+        "name": "New York",
+        "region": "New York",
+        "country": "United States"
+      },
+      "forecast": {
+        "forecastday": [
+          {
+            "date": "2023-01-01",
+            "day": {
+              "condition": {
+                "text": "Sunny"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "expected_status_code": 200
+  },
+  {
+    "description": "Missing required 'q' parameter",
+    "request_header": {
+      "Authorization": "${AUTH_TOKEN}"
+    },
+    "request_body": {},
+    "query_params": {
+      "dt": "2023-01-01"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 1003,
+      "message": "Missing required parameter: 'q'"
+    },
+    "expected_status_code": 400
+  },
+  {
+    "description": "Invalid 'q' parameter value",
+    "request_header": {
+      "Authorization": "${AUTH_TOKEN}"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "###",
+      "dt": "2023-01-01"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 1005,
+      "message": "Invalid location: '###'"
+    },
+    "expected_status_code": 400
+  },
+  {
+    "description": "Invalid date format for 'dt' parameter",
+    "request_header": {
+      "Authorization": "${AUTH_TOKEN}"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "New York",
+      "dt": "01-01-2023"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 1008,
+      "message": "Invalid date format"
+    },
+    "expected_status_code": 400
+  },
+  {
+    "description": "Date parameter out of range (less than 14 days)",
+    "request_header": {
+      "Authorization": "${AUTH_TOKEN}"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "New York",
+      "dt": "2022-07-15"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 1007,
+      "message": "Date out of range"
+    },
+    "expected_status_code": 400
+  },
+  {
+    "description": "Date parameter out of range (more than 365 days)",
+    "request_header": {
+      "Authorization": "${AUTH_TOKEN}"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "New York", 
+      "dt": "2024-01-01"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 1007,
+      "message": "Date out of range"
+    },
+    "expected_status_code": 400
+  },
+  {
+    "description": "Invalid 'lang' parameter value",
+    "request_header": {
+      "Authorization": "${AUTH_TOKEN}"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "New York",
+      "dt": "2023-01-01",
+      "lang": "xyz"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "forecast": {
+        "forecastday": [
+          {
+            "day": {
+              "condition": {
+                "text": "Sunny"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "expected_status_code": 200
+  },
+  {
+    "description": "Missing API key",
+    "request_header": {},
+    "request_body": {},
+    "query_params": {
+      "q": "New York"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 1002,
+      "message": "Missing API key"
+    },
+    "expected_status_code": 401
+  },
+  {
+    "description": "Invalid API key",
+    "request_header": {
+      "Authorization": "invalid_key"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "New York"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 1002,
+      "message": "Invalid API key"
+    },
+    "expected_status_code": 401
+  },
+  {
+    "description": "API key exceeded call limit",
+    "request_header": {
+      "Authorization": "${EXCEEDED_LIMIT_KEY}"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "New York"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 1010,
+      "message": "API key exceeded call limit"
+    },
+    "expected_status_code": 403
+  },
+  {
+    "description": "Disabled API key",
+    "request_header": {
+      "Authorization": "${DISABLED_KEY}"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "New York"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 1009,
+      "message": "API key disabled"
+    },
+    "expected_status_code": 403
+  }
+]
