@@ -1,0 +1,134 @@
+{
+  "scenarios": [
+    {
+      "type": "functional",
+      "title": "Validate Current Unpaid Credit Card Balance",
+      "description": "Verify the system correctly displays the current unpaid balance on a credit card.",
+      "testId": "TC-001",
+      "testDescription": "This test verifies that the system accurately shows the correct unpaid balance for a credit card. The balance should reflect all transactions, payments, and applicable fees or interest charges that have been posted to the account.",
+      "prerequisites": "1. User must have an active credit card account.\n2. User must be logged into the system.\n3. The credit card must have some transaction history.",
+      "stepsToPerform": "1. Navigate to the credit card account section.\n2. Select the specific credit card to view its details.\n3. Locate the unpaid balance section on the screen.\n4. Compare the displayed balance with expected balance from the database.",
+      "expectedResult": "The unpaid balance displayed should match the calculated balance in the system database, accounting for all posted transactions, payments, fees, and interest charges."
+    },
+    {
+      "type": "functional",
+      "title": "Verify Payment Due Date Accuracy",
+      "description": "Ensure the system displays the correct payment due date for the credit card balance.",
+      "testId": "TC-002",
+      "testDescription": "This test confirms that the payment due date shown to the customer is accurate according to the billing cycle and bank policies.",
+      "prerequisites": "1. User must have an active credit card account.\n2. User must be logged into the system.\n3. The credit card must have an outstanding balance.",
+      "stepsToPerform": "1. Navigate to the credit card account section.\n2. Select the specific credit card to view its details.\n3. Locate the payment due date information.\n4. Compare the displayed due date with the expected due date based on the billing cycle rules.",
+      "expectedResult": "The payment due date displayed should match the calculated due date based on the billing cycle rules (typically one month from the statement generation date)."
+    },
+    {
+      "type": "functional",
+      "title": "Past Due Payment Automated Call Trigger",
+      "description": "Verify that the system automatically triggers a collection call when a payment becomes past due.",
+      "testId": "TC-003",
+      "testDescription": "This test verifies the automated call system functionality that triggers when a customer's payment becomes past due.",
+      "prerequisites": "1. A credit card account with an unpaid balance.\n2. The payment due date has passed.\n3. Access to the call system logs or administrative interface.",
+      "stepsToPerform": "1. Select a test account with a payment due date that has just passed.\n2. Run the daily batch process for identifying past due accounts (or manually trigger it for the test account).\n3. Check the outbound call queue in the collection system.\n4. Verify call logs to confirm the automated call was triggered.\n5. If possible, listen to a test call or review call transcript.",
+      "expectedResult": "The system should have automatically placed the account in the outbound call queue and initiated a collection call to the customer's registered phone number with appropriate payment reminder message."
+    },
+    {
+      "type": "functional",
+      "title": "Card Payment Collection Process",
+      "description": "Test the end-to-end process of collecting payment for the outstanding credit card balance.",
+      "testId": "TC-004",
+      "testDescription": "This test verifies that customers can make payments towards their credit card balance using another card, and that the payment is processed correctly.",
+      "prerequisites": "1. A credit card account with an unpaid balance.\n2. Valid alternative payment card details available for making the payment.\n3. Payment processing system is operational.",
+      "stepsToPerform": "1. Log in to the credit card payment portal.\n2. Navigate to the 'Make a Payment' section.\n3. Enter the payment amount (e.g., $500).\n4. Select 'Pay by Card' as the payment method.\n5. Enter valid payment card details (card number: 4111 1111 1111 1111, expiry: future date, CVV: 123).\n6. Submit the payment.\n7. Note the confirmation number/reference ID.\n8. Verify the payment status in the account history.",
+      "expectedResult": "1. The system should accept the payment.\n2. A confirmation message should be displayed with a reference number.\n3. The payment should appear in the account transaction history.\n4. The outstanding balance should be reduced by the payment amount."
+    },
+    {
+      "type": "functional",
+      "title": "Balance Update After Payment",
+      "description": "Verify that the credit card balance is updated correctly after a payment is made.",
+      "testId": "TC-005",
+      "testDescription": "This test ensures that once a payment is processed, the unpaid balance is updated accurately and in a timely manner.",
+      "prerequisites": "1. A credit card account with an unpaid balance.\n2. A successful payment transaction has been completed.",
+      "stepsToPerform": "1. Make a payment of a specific amount (e.g., $200) to the credit card.\n2. Note the initial balance before payment (e.g., $1000).\n3. Wait for the payment processing time (typically immediately for online payments, or specify appropriate time).\n4. View the updated account balance.\n5. Calculate if the new balance equals (initial balance - payment amount).",
+      "expectedResult": "The new unpaid balance should reflect the payment made. For example, if the initial balance was $1000 and a payment of $200 was made, the new balance should be $800."
+    },
+    {
+      "type": "functional",
+      "title": "Handle Overpayment Scenario",
+      "description": "Verify system behavior when payment amount exceeds the outstanding balance.",
+      "testId": "TC-006",
+      "testDescription": "This test checks how the system handles cases where a customer pays more than the outstanding balance on their credit card.",
+      "prerequisites": "1. A credit card account with a known unpaid balance (e.g., $500).\n2. Valid payment method available.",
+      "stepsToPerform": "1. Log in to the credit card payment portal.\n2. Navigate to the 'Make a Payment' section.\n3. Enter a payment amount that exceeds the current balance (e.g., $600 for a $500 balance).\n4. Complete the payment process with valid payment details.\n5. Check the new balance after payment processing.",
+      "expectedResult": "The system should accept the overpayment, set the balance to $0, and show a credit balance of $100 that can be used for future purchases or be refunded according to the bank's policy."
+    },
+    {
+      "type": "functional",
+      "title": "Invalid Payment Card Rejection",
+      "description": "Verify that the system rejects payments made with invalid card details.",
+      "testId": "TC-007",
+      "testDescription": "This test ensures that the payment collection system properly validates payment card details and rejects invalid cards.",
+      "prerequisites": "1. A credit card account with an unpaid balance.\n2. Access to the payment portal.",
+      "stepsToPerform": "1. Log in to the credit card payment portal.\n2. Navigate to the 'Make a Payment' section.\n3. Enter a valid payment amount.\n4. Select 'Pay by Card' as the payment method.\n5. Enter invalid card details (e.g., card number: 1234 5678 9012 3456, expired date, incorrect CVV).\n6. Attempt to submit the payment.\n7. Observe the system response.",
+      "expectedResult": "The system should reject the payment, display an appropriate error message explaining why the card was declined, and the unpaid balance should remain unchanged."
+    },
+    {
+      "type": "functional",
+      "title": "New Card Zero Balance Verification",
+      "description": "Verify that newly issued credit cards have zero unpaid balance.",
+      "testId": "TC-008",
+      "testDescription": "This test checks that when a new credit card is issued, it correctly shows a zero unpaid balance until transactions are made.",
+      "prerequisites": "1. A newly issued credit card account.\n2. User must be able to access the account details.",
+      "stepsToPerform": "1. Log in to the system with credentials for a newly created credit card account.\n2. Navigate to the credit card details section.\n3. View the unpaid balance information.\n4. Verify there are no transactions or fees listed yet.",
+      "expectedResult": "The unpaid balance for the newly issued card should be displayed as $0 with no pending payments or transactions."
+    },
+    {
+      "type": "non-functional",
+      "title": "Card Balance Retrieval Response Time",
+      "description": "Measure the system's response time when retrieving credit card balance information.",
+      "testId": "TC-009",
+      "testDescription": "This performance test measures how quickly the system can retrieve and display credit card balance information to ensure a smooth user experience.",
+      "prerequisites": "1. Test environment with monitoring tools.\n2. Multiple test credit card accounts with various balance levels and transaction histories.\n3. Performance measurement tools configured.",
+      "stepsToPerform": "1. Using an automated testing tool, simulate 100 concurrent users accessing their credit card balance information.\n2. Measure the response time for each request from initiation to complete data display.\n3. Run the test during both peak and off-peak hours.\n4. Record the average, minimum, and maximum response times.\n5. Compare results against the performance requirements (e.g., 95% of requests should complete within 2 seconds).",
+      "expectedResult": "The average response time for retrieving card balance should be under 1 second. Maximum response time should not exceed 3 seconds even under peak load. The system should maintain consistent performance regardless of the account balance or transaction history size."
+    },
+    {
+      "type": "non-functional",
+      "title": "Concurrent User Load Test for Balance Checking",
+      "description": "Verify system performance under high concurrent load of users checking card balances.",
+      "testId": "TC-010",
+      "testDescription": "This test evaluates the system's ability to handle multiple simultaneous users checking their credit card balances without performance degradation.",
+      "prerequisites": "1. Load testing environment configured.\n2. Monitoring tools in place to measure system metrics.\n3. Test data for simulating multiple user accounts.",
+      "stepsToPerform": "1. Configure the load testing tool to simulate gradual increase in concurrent users from 100 to 10,000 over a 30-minute period.\n2. Each simulated user should log in, navigate to the card balance section, view their balance, and log out.\n3. Monitor server response time, CPU usage, memory consumption, and database performance during the test.\n4. Continue the test at peak load (10,000 concurrent users) for 15 minutes.\n5. Record all performance metrics throughout the test period.",
+      "expectedResult": "The system should maintain acceptable performance levels (response time under 3 seconds) even at peak load. No errors should occur due to the high traffic. System resources should not be exhausted (CPU usage below 80%, memory usage below 90%)."
+    },
+    {
+      "type": "non-functional",
+      "title": "Automated Call System Reliability Test",
+      "description": "Evaluate the reliability of the automated call system for payment collection.",
+      "testId": "TC-011",
+      "testDescription": "This test assesses the reliability and consistency of the automated call system used for contacting customers with past due payments.",
+      "prerequisites": "1. Test environment for the automated call system.\n2. Multiple test phone numbers configured to receive calls.\n3. A batch of test accounts marked as past due.\n4. Call monitoring and recording tools.",
+      "stepsToPerform": "1. Configure 500 test accounts with varying past due periods (1-90 days).\n2. Trigger the automated call system to process these accounts.\n3. Monitor call completion rates, call quality, and message delivery accuracy.\n4. Run the system continuously for a 72-hour period.\n5. Simulate various network conditions including peak hours and limited bandwidth.\n6. Record all calls and analyze for message accuracy and completion.",
+      "expectedResult": "The automated call system should achieve at least 98% successful call completion rate. All delivered messages should be clear and accurate. The system should operate without failures for the entire 72-hour test period. Call quality metrics should meet minimum threshold standards (clear audio, no dropped calls)."
+    },
+    {
+      "type": "non-functional",
+      "title": "Payment Collection Security Assessment",
+      "description": "Test the security measures protecting the card payment collection process.",
+      "testId": "TC-012",
+      "testDescription": "This security test evaluates the protection mechanisms in place to ensure credit card payments are processed securely and customer data is protected.",
+      "prerequisites": "1. Security testing tools configured.\n2. Test credit card accounts with test payment methods.\n3. Access to verify encryption implementations.\n4. Permission to perform security tests.",
+      "stepsToPerform": "1. Attempt common security exploits (SQL injection, XSS, CSRF) on the payment form.\n2. Use network monitoring tools to verify all payment data is transmitted using secure protocols (TLS 1.2 or higher).\n3. Verify card numbers are masked appropriately in the UI and logs.\n4. Test the tokenization process for card storage if applicable.\n5. Attempt to access payment details through unauthorized channels.\n6. Review audit logs to ensure all payment activities are properly logged.",
+      "expectedResult": "All security attacks should be blocked by the system. Payment data should be encrypted in transit and at rest. Only masked card numbers (e.g., **** **** **** 1234) should be visible in interfaces and logs. The system should comply with PCI-DSS requirements for handling payment card information."
+    },
+    {
+      "type": "non-functional",
+      "title": "Disaster Recovery for Payment Collection System",
+      "description": "Test the disaster recovery capabilities of the card payment collection system.",
+      "testId": "TC-013",
+      "testDescription": "This test evaluates how quickly and effectively the payment collection system can recover from a system failure or disaster scenario.",
+      "prerequisites": "1. Disaster recovery plan documented.\n2. Backup systems configured.\n3. Permission to simulate system failure.\n4. In-progress payment transactions prepared for test.",
+      "stepsToPerform": "1. Initiate several payment transactions but don't complete them.\n2. Simulate a critical system failure (e.g., database crash, application server failure).\n3. Trigger the disaster recovery procedures.\n4. Measure the time taken to restore system functionality.\n5. Verify the state of in-progress transactions after recovery.\n6. Attempt new payment transactions after system recovery.\n7. Check system logs and data integrity after recovery.",
+      "expectedResult": "The system should recover full functionality within the defined RTO (Recovery Time Objective) - typically under 30 minutes for a critical financial system. No data loss should occur for completed transactions. In-progress transactions should either be completed successfully or clearly marked as failed with appropriate user notification. The system should maintain data integrity and transaction consistency after recovery."
+    }
+  ]
+}
