@@ -1,0 +1,23 @@
+TC-ZBIO-5136-001 - Validate Current Unpaid Card Balance Display
+TC-ZBIO-5136-002 - Validate Zero Balance for New Credit Cards
+TC-ZBIO-5136-003 - Verify Payment Due Date Display
+TC-ZBIO-5136-004 - Verify Payment Due Date for Newly Issued Cards
+TC-ZBIO-5136-005 - Verify System Identifies Past Due Payment Status
+TC-ZBIO-5136-006 - Verify Automated Call Trigger for Past Due Payment
+TC-ZBIO-5136-007 - Verify No Call Trigger for New Cards Without Due Payment
+TC-ZBIO-5136-008 - Verify Successful Payment Collection via Card Payment
+TC-ZBIO-5136-009 - Verify Payment Rejection for Invalid Card Details
+TC-ZBIO-5136-010 - Verify Balance Update After Partial Payment
+TC-ZBIO-5136-011 - Verify Balance Update After Full Payment
+TC-ZBIO-5136-012 - Verify Overpayment Handling
+TC-ZBIO-5136-013 - Verify Call Arrangement Workflow Initiation
+TC-ZBIO-5136-014 - Verify Payment Collection Process Integration
+TC-ZBIO-5136-015 - Verify Multiple Payment Attempts Handling
+TC-ZBIO-5136-NF-001 - Verify System Response Time for Balance Retrieval
+TC-ZBIO-5136-NF-002 - Verify Concurrent User Load Handling for Balance Checks
+TC-ZBIO-5136-NF-003 - Verify Automated Call System Reliability
+TC-ZBIO-5136-NF-004 - Verify Payment Transaction Security and Encryption
+TC-ZBIO-5136-NF-005 - Verify Disaster Recovery Time Objective
+TC-ZBIO-5136-NF-006 - Verify System Scalability for Growing User Base
+TC-ZBIO-5136-NF-007 - Verify Audit Trail and Compliance Logging
+TC-ZBIO-5136-NF-008 - Verify Accessibility Compliance for Payment Interfaces

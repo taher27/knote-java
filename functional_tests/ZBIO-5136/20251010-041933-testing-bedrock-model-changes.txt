@@ -1,0 +1,234 @@
+{
+  "scenarios": [
+    {
+      "type": "functional",
+      "title": "Validate Current Unpaid Card Balance Display",
+      "description": "Verify that the system correctly displays the current unpaid balance for a customer's credit card.",
+      "testId": "TC-ZBIO-5136-001",
+      "testDescription": "This test validates that the system accurately retrieves and displays the unpaid balance amount that the customer has not yet paid on their credit card account.",
+      "prerequisites": "1. Customer account exists in the system.\n2. Credit card is active and associated with the customer account.\n3. Card has transaction history with outstanding balance.",
+      "stepsToPerform": "1. Log in to the system with valid customer credentials.\n2. Navigate to the credit card account section.\n3. Select the specific credit card to view details.\n4. Locate and observe the unpaid balance field.\n5. Verify the displayed balance amount.",
+      "expectedResult": "The system displays the correct unpaid balance amount for the selected credit card. The balance matches the actual outstanding amount in the database."
+    },
+    {
+      "type": "functional",
+      "title": "Validate Zero Balance for New Credit Cards",
+      "description": "Verify that newly issued credit cards show zero unpaid balance when no transactions have been made.",
+      "testId": "TC-ZBIO-5136-002",
+      "testDescription": "This test ensures that the system correctly initializes new credit cards with a zero unpaid balance until the first transaction is made.",
+      "prerequisites": "1. Customer account exists in the system.\n2. A new credit card has been issued to the customer.\n3. No transactions have been made on the card.",
+      "stepsToPerform": "1. Log in to the system with valid customer credentials.\n2. Navigate to the newly issued credit card account.\n3. View the card balance details.\n4. Check the unpaid balance field.",
+      "expectedResult": "The system displays an unpaid balance of 0.00 for the newly issued credit card with no transaction history."
+    },
+    {
+      "type": "functional",
+      "title": "Verify Payment Due Date Display",
+      "description": "Verify that the system correctly displays the payment due date for the credit card balance.",
+      "testId": "TC-ZBIO-5136-003",
+      "testDescription": "This test validates that the payment due date is accurately calculated and displayed for the customer's credit card account based on the billing cycle.",
+      "prerequisites": "1. Customer account exists with an active credit card.\n2. Card has an outstanding balance.\n3. Billing cycle is configured in the system.",
+      "stepsToPerform": "1. Log in to the system with customer credentials.\n2. Navigate to the credit card details page.\n3. Locate the payment due date field.\n4. Verify the displayed due date.\n5. Cross-check with billing cycle configuration.",
+      "expectedResult": "The system displays the correct payment due date that aligns with the billing cycle end date plus the grace period (typically 21-25 days from billing cycle end)."
+    },
+    {
+      "type": "functional",
+      "title": "Verify Payment Due Date for Newly Issued Cards",
+      "description": "Verify that newly issued cards have a payment due date set to one billing cycle from the card issue date.",
+      "testId": "TC-ZBIO-5136-004",
+      "testDescription": "This test ensures that the system correctly calculates the initial payment due date for newly created credit cards based on the card issuance date.",
+      "prerequisites": "1. Customer account exists in the system.\n2. New credit card has just been issued.\n3. Card issue date is recorded in the system.",
+      "stepsToPerform": "1. Note the card issue date.\n2. Log in to the system with customer credentials.\n3. Navigate to the newly issued credit card details.\n4. Locate and verify the payment due date.\n5. Calculate expected due date (issue date + one billing cycle + grace period).\n6. Compare displayed date with calculated date.",
+      "expectedResult": "The system displays a payment due date that is exactly one billing cycle (typically 30 days) plus the grace period from the card issue date."
+    },
+    {
+      "type": "functional",
+      "title": "Verify System Identifies Past Due Payment Status",
+      "description": "Verify that the system correctly identifies when a payment due date has passed without payment.",
+      "testId": "TC-ZBIO-5136-005",
+      "testDescription": "This test validates that the system can accurately detect when the current date exceeds the payment due date and the balance remains unpaid.",
+      "prerequisites": "1. Customer account exists with an active credit card.\n2. Card has an outstanding unpaid balance.\n3. Payment due date has passed.\n4. System date is set correctly.",
+      "stepsToPerform": "1. Set up a test card with an unpaid balance and a past due date.\n2. Log in to the system as an administrator or customer.\n3. Navigate to the card account details.\n4. Check the payment status indicator.\n5. Verify if the system flags the account as past due.",
+      "expectedResult": "The system correctly identifies and displays the account as 'Past Due' or 'Overdue' with appropriate visual indicators (e.g., red flag, warning icon)."
+    },
+    {
+      "type": "functional",
+      "title": "Verify Automated Call Trigger for Past Due Payment",
+      "description": "Verify that the system automatically triggers a collection call when payment is past due.",
+      "testId": "TC-ZBIO-5136-006",
+      "testDescription": "This test ensures that the automated collection system initiates a call to the customer when the payment due date has passed and the balance remains unpaid.",
+      "prerequisites": "1. Customer account exists with valid contact phone number.\n2. Credit card has unpaid balance past the due date.\n3. Automated call system is configured and active.\n4. Customer has not opted out of collection calls.",
+      "stepsToPerform": "1. Set up a test card with past due balance.\n2. Wait for the scheduled collection call trigger time (or manually trigger if test environment allows).\n3. Monitor the automated call system logs.\n4. Verify that a call is queued or initiated.\n5. Check call disposition in the system.\n6. Verify customer receives the call (in test environment).",
+      "expectedResult": "The system automatically triggers a collection call to the customer's registered phone number. The call is logged in the system with timestamp, call status, and customer response (if captured)."
+    },
+    {
+      "type": "functional",
+      "title": "Verify No Call Trigger for New Cards Without Due Payment",
+      "description": "Verify that the system does not trigger collection calls for new cards with no payment due.",
+      "testId": "TC-ZBIO-5136-007",
+      "testDescription": "This test ensures that the automated collection system does not initiate unnecessary calls for new credit cards that have no outstanding balance or past due payments.",
+      "prerequisites": "1. Customer account exists with a newly issued credit card.\n2. Card has zero balance or no payment due.\n3. Automated call system is configured and active.",
+      "stepsToPerform": "1. Create a new credit card account with no transactions.\n2. Wait for the collection call trigger cycle to run.\n3. Monitor the automated call system logs.\n4. Check if any calls were queued or initiated for this card.\n5. Verify the call history for the customer account.",
+      "expectedResult": "The system does not trigger any collection calls for the new card. No call records are created in the system for this account."
+    },
+    {
+      "type": "functional",
+      "title": "Verify Successful Payment Collection via Card Payment",
+      "description": "Verify that the system successfully processes payment when valid card details are provided.",
+      "testId": "TC-ZBIO-5136-008",
+      "testDescription": "This test validates the complete card payment collection process from payment initiation to successful transaction completion and balance update.",
+      "prerequisites": "1. Customer account exists with an outstanding card balance.\n2. Valid payment card details are available (test card numbers for test environment).\n3. Payment gateway is configured and active.\n4. Customer has sufficient credit/balance on payment card.",
+      "stepsToPerform": "1. Log in to the system with customer credentials.\n2. Navigate to the payment section for the credit card.\n3. Select 'Make Payment' option.\n4. Enter valid payment card details (card number, expiry date, CVV).\n5. Enter payment amount (full balance or partial amount).\n6. Submit the payment.\n7. Wait for payment processing confirmation.\n8. Verify payment success message.\n9. Check updated balance.",
+      "expectedResult": "The system successfully processes the payment. A confirmation message is displayed with transaction ID. The card balance is immediately updated to reflect the payment. Payment receipt is generated and available for download."
+    },
+    {
+      "type": "functional",
+      "title": "Verify Payment Rejection for Invalid Card Details",
+      "description": "Verify that the system rejects payment attempts when invalid card details are provided.",
+      "testId": "TC-ZBIO-5136-009",
+      "testDescription": "This test ensures that the payment collection system properly validates card details and rejects transactions with invalid information.",
+      "prerequisites": "1. Customer account exists with an outstanding card balance.\n2. Payment interface is accessible.\n3. Payment gateway validation is active.",
+      "stepsToPerform": "1. Log in to the system with customer credentials.\n2. Navigate to the payment section.\n3. Select 'Make Payment' option.\n4. Enter invalid card details (expired card, invalid card number, incorrect CVV).\n5. Enter payment amount.\n6. Attempt to submit the payment.\n7. Observe system response.",
+      "expectedResult": "The system rejects the payment and displays an appropriate error message (e.g., 'Invalid card details', 'Card expired', 'Transaction declined'). No amount is deducted. The card balance remains unchanged."
+    },
+    {
+      "type": "functional",
+      "title": "Verify Balance Update After Partial Payment",
+      "description": "Verify that the unpaid balance is correctly reduced after a partial payment is made.",
+      "testId": "TC-ZBIO-5136-010",
+      "testDescription": "This test validates that the system accurately calculates and updates the remaining balance when a customer makes a partial payment towards their outstanding amount.",
+      "prerequisites": "1. Customer account exists with a known outstanding balance (e.g., $500).\n2. Payment functionality is available.\n3. Valid payment method is configured.",
+      "stepsToPerform": "1. Note the current unpaid balance amount.\n2. Log in to the system with customer credentials.\n3. Navigate to the payment section.\n4. Make a partial payment (e.g., $200 against $500 balance).\n5. Complete the payment transaction successfully.\n6. Return to the card balance page.\n7. Verify the updated balance.\n8. Calculate expected remaining balance (Original - Payment).",
+      "expectedResult": "The system correctly reduces the unpaid balance by the paid amount. For example, if the original balance was $500 and $200 was paid, the new balance shows $300. The transaction is recorded in payment history."
+    },
+    {
+      "type": "functional",
+      "title": "Verify Balance Update After Full Payment",
+      "description": "Verify that the unpaid balance becomes zero after a full payment is made.",
+      "testId": "TC-ZBIO-5136-011",
+      "testDescription": "This test validates that the system correctly updates the balance to zero when the customer pays the entire outstanding amount.",
+      "prerequisites": "1. Customer account exists with a known outstanding balance.\n2. Payment functionality is available.\n3. Valid payment method is configured.",
+      "stepsToPerform": "1. Note the current unpaid balance amount.\n2. Log in to the system with customer credentials.\n3. Navigate to the payment section.\n4. Make a payment equal to the full outstanding balance.\n5. Complete the payment transaction successfully.\n6. Return to the card balance page.\n7. Verify the updated balance shows zero.\n8. Check account status.",
+      "expectedResult": "The system updates the unpaid balance to $0.00. The account status changes to 'Paid in Full' or 'Current'. No past due indicators are displayed. Payment history shows the full payment transaction."
+    },
+    {
+      "type": "functional",
+      "title": "Verify Overpayment Handling",
+      "description": "Verify that the system correctly handles situations where the payment amount exceeds the unpaid balance.",
+      "testId": "TC-ZBIO-5136-012",
+      "testDescription": "This test ensures that the system properly processes overpayments and either credits the excess amount to the account or provides appropriate handling mechanism.",
+      "prerequisites": "1. Customer account exists with a known outstanding balance (e.g., $100).\n2. Payment functionality allows payments greater than the balance.\n3. Overpayment policy is defined in the system.",
+      "stepsToPerform": "1. Note the current unpaid balance (e.g., $100).\n2. Log in to the system with customer credentials.\n3. Navigate to the payment section.\n4. Enter a payment amount greater than the balance (e.g., $150).\n5. Submit the payment.\n6. Observe system behavior and any warnings/confirmations.\n7. Complete the transaction.\n8. Check the updated balance and account credit.\n9. Verify payment history and credit balance.",
+      "expectedResult": "The system processes the overpayment successfully. The unpaid balance becomes $0.00. The excess amount ($50 in this example) is credited to the customer's account and shown as 'Account Credit' or similar. The credit can be applied to future charges or refunded according to policy."
+    },
+    {
+      "type": "functional",
+      "title": "Verify Call Arrangement Workflow Initiation",
+      "description": "Verify that customer service representatives can manually arrange collection calls for past due accounts.",
+      "testId": "TC-ZBIO-5136-013",
+      "testDescription": "This test validates the manual call arrangement process where customer service staff can schedule collection calls for customers with overdue payments.",
+      "prerequisites": "1. Customer account exists with past due balance.\n2. User has customer service representative access rights.\n3. Call scheduling system is available.\n4. Customer contact information is valid.",
+      "stepsToPerform": "1. Log in as a customer service representative.\n2. Search for and open the customer account with past due balance.\n3. Navigate to the collections or call arrangement section.\n4. Select 'Arrange Collection Call' option.\n5. Choose or enter call date and time.\n6. Select call type (automated or manual).\n7. Add notes or reason for the call.\n8. Submit the call arrangement.\n9. Verify call is scheduled in the system.",
+      "expectedResult": "The system successfully schedules the collection call. The call appears in the customer's activity log with scheduled date/time. The call queue shows the pending call. A notification or reminder is set for the scheduled time."
+    },
+    {
+      "type": "functional",
+      "title": "Verify Payment Collection Process Integration",
+      "description": "Verify the end-to-end integration of collection call results with the payment process.",
+      "testId": "TC-ZBIO-5136-014",
+      "testDescription": "This test validates that the system properly integrates collection call outcomes with the payment collection workflow, including payment commitments and follow-up actions.",
+      "prerequisites": "1. Customer account exists with past due balance.\n2. Collection call has been completed.\n3. Call disposition options are configured.\n4. Payment tracking system is active.",
+      "stepsToPerform": "1. Complete a collection call with the customer (or use test call record).\n2. Log the call outcome (e.g., customer agreed to pay by specific date).\n3. Record payment commitment details.\n4. Set follow-up reminders or actions.\n5. Navigate to the customer's account after the committed date.\n6. Verify if payment was received as committed.\n7. Check if follow-up actions are triggered if payment not received.\n8. Verify call history and payment tracking integration.",
+      "expectedResult": "The system properly records call disposition and payment commitments. Follow-up tasks are automatically created based on commitments. If payment is not received by committed date, escalation actions are triggered. All activities are logged and visible in customer account timeline."
+    },
+    {
+      "type": "functional",
+      "title": "Verify Multiple Payment Attempts Handling",
+      "description": "Verify that the system correctly handles multiple payment attempts including failed and successful transactions.",
+      "testId": "TC-ZBIO-5136-015",
+      "testDescription": "This test ensures that the system maintains accurate records and state when customers make multiple payment attempts, including handling of failures and retries.",
+      "prerequisites": "1. Customer account exists with outstanding balance.\n2. Payment system allows multiple attempts.\n3. Transaction logging is enabled.",
+      "stepsToPerform": "1. Log in with customer credentials.\n2. Navigate to payment section.\n3. Attempt a payment with invalid card details (should fail).\n4. Note the error message and transaction status.\n5. Attempt another payment with different invalid details (should fail).\n6. Finally, make a payment with valid card details (should succeed).\n7. Review transaction history.\n8. Verify balance is updated only for successful transaction.\n9. Check that all attempts are logged.",
+      "expectedResult": "The system logs all payment attempts (both failed and successful) with timestamps. Failed attempts do not affect the balance. Only the successful payment reduces the balance. Error messages are clear and helpful. No duplicate charges occur. Transaction history shows complete audit trail."
+    },
+    {
+      "type": "non-functional",
+      "title": "Verify System Response Time for Balance Retrieval",
+      "description": "Verify that the system retrieves and displays card balance information within acceptable response time limits.",
+      "testId": "TC-ZBIO-5136-NF-001",
+      "testDescription": "This performance test measures the time taken by the system to retrieve and display the unpaid card balance when requested by a user.",
+      "prerequisites": "1. System is running in normal operational state.\n2. Database contains typical production-like data volume.\n3. Network connectivity is stable.\n4. Performance monitoring tools are configured.",
+      "stepsToPerform": "1. Set up performance monitoring tools to measure response time.\n2. Log in to the system with customer credentials.\n3. Start timer or monitoring.\n4. Navigate to the credit card balance page.\n5. Record the time taken to fully load and display balance.\n6. Repeat the test 10-20 times to get average response time.\n7. Test during different load conditions (low, medium, high).\n8. Analyze response time metrics.",
+      "expectedResult": "The system retrieves and displays the card balance within 2 seconds under normal load conditions. 95th percentile response time does not exceed 3 seconds. No timeout errors occur. Page load time remains consistent across multiple attempts."
+    },
+    {
+      "type": "non-functional",
+      "title": "Verify Concurrent User Load Handling for Balance Checks",
+      "description": "Verify that the system can handle multiple users checking their card balance simultaneously without performance degradation.",
+      "testId": "TC-ZBIO-5136-NF-002",
+      "testDescription": "This load test validates the system's ability to maintain performance and stability when multiple users access card balance information concurrently.",
+      "prerequisites": "1. Load testing tools are configured (e.g., JMeter, LoadRunner).\n2. Multiple test user accounts exist (at least 100-500).\n3. System monitoring tools are active.\n4. Baseline performance metrics are established.",
+      "stepsToPerform": "1. Configure load testing tool with multiple virtual users (start with 50, increase to 100, 200, 500).\n2. Create test script to simulate user login and balance check.\n3. Execute load test with 50 concurrent users.\n4. Monitor system resources (CPU, memory, database connections).\n5. Record response times and error rates.\n6. Gradually increase load to 100, 200, and 500 concurrent users.\n7. Monitor for performance degradation, errors, or timeouts.\n8. Analyze results and identify bottlenecks.",
+      "expectedResult": "The system successfully handles at least 500 concurrent users checking balances without significant performance degradation. Response time increases by no more than 50% at peak load. Error rate remains below 1%. No system crashes or service outages occur. Database connection pool efficiently manages concurrent requests."
+    },
+    {
+      "type": "non-functional",
+      "title": "Verify Automated Call System Reliability",
+      "description": "Verify that the automated collection call system operates reliably over an extended period without failures.",
+      "testId": "TC-ZBIO-5136-NF-003",
+      "testDescription": "This reliability test ensures that the automated call triggering and execution system functions consistently and dependably over time.",
+      "prerequisites": "1. Automated call system is configured and operational.\n2. Test accounts with past due balances are available.\n3. Call system monitoring and logging are enabled.\n4. Test environment allows extended duration testing (24-72 hours).",
+      "stepsToPerform": "1. Set up monitoring for the automated call system.\n2. Configure multiple test accounts with past due payments to trigger calls.\n3. Enable the automated call scheduler.\n4. Monitor call system for 24-72 hours continuously.\n5. Track successful call initiations vs. failures.\n6. Monitor system logs for errors or exceptions.\n7. Verify call completion rates.\n8. Check for memory leaks or resource exhaustion.\n9. Analyze system uptime and availability.\n10. Calculate Mean Time Between Failures (MTBF).",
+      "expectedResult": "The automated call system maintains 99.5% or higher uptime over the test period. Call success rate is at least 95%. No system crashes or unhandled exceptions occur. Call queue processes efficiently without backlog buildup. System resources remain stable (no memory leaks). All triggered calls are logged correctly."
+    },
+    {
+      "type": "non-functional",
+      "title": "Verify Payment Transaction Security and Encryption",
+      "description": "Verify that all payment transactions and card details are properly encrypted and secured during transmission and storage.",
+      "testId": "TC-ZBIO-5136-NF-004",
+      "testDescription": "This security test validates that the payment collection system implements proper encryption, secure transmission protocols, and data protection measures to prevent unauthorized access or breaches.",
+      "prerequisites": "1. Security testing tools are available (e.g., OWASP ZAP, Burp Suite).\n2. Access to system logs and encryption configurations.\n3. PCI-DSS compliance requirements are documented.\n4. Test environment mirrors production security settings.",
+      "stepsToPerform": "1. Use security scanning tools to analyze payment pages and APIs.\n2. Verify that HTTPS/TLS is enforced for all payment-related communications.\n3. Check TLS version (should be 1.2 or higher).\n4. Attempt to intercept payment data transmission using proxy tools.\n5. Verify card details are tokenized or encrypted in transit.\n6. Check database to ensure card details are not stored in plain text.\n7. Verify PCI-DSS compliance (card data should be masked/tokenized).\n8. Test for SQL injection and XSS vulnerabilities on payment forms.\n9. Verify session management and timeout policies.\n10. Check for secure password/authentication mechanisms.\n11. Review audit logs for security events.",
+      "expectedResult": "All payment transactions use HTTPS with TLS 1.2 or higher. Card details are encrypted during transmission using strong encryption algorithms (AES-256 or equivalent). Sensitive data is never stored in plain text. Card numbers are masked (showing only last 4 digits) in UI and logs. Payment forms are protected against injection attacks. Session tokens are secure and expire appropriately. System passes PCI-DSS compliance requirements. No sensitive data is exposed in error messages or logs."
+    },
+    {
+      "type": "non-functional",
+      "title": "Verify Disaster Recovery Time Objective (RTO)",
+      "description": "Verify that the card payment collection system can recover from a crash or malfunction within the defined Recovery Time Objective.",
+      "testId": "TC-ZBIO-5136-NF-005",
+      "testDescription": "This disaster recovery test validates the system's ability to restore payment collection services within acceptable timeframes after a system failure or crash.",
+      "prerequisites": "1. Disaster recovery plan is documented with defined RTO (e.g., 4 hours).\n2. Backup systems and data are configured.\n3. Failover procedures are documented.\n4. Test environment allows simulated system failures.\n5. Recovery procedures are accessible to operations team.",
+      "stepsToPerform": "1. Document current system state and active transactions.\n2. Simulate a system crash or critical failure (in test environment).\n3. Start timer to measure recovery time.\n4. Initiate disaster recovery procedures according to documented plan.\n5. Restore system from backups or activate failover systems.\n6. Verify database integrity and data consistency.\n7. Test critical payment collection functions.\n8. Verify no data loss occurred.\n9. Check that in-progress transactions are properly handled.\n10. Record total time taken to restore full functionality.\n11. Validate system operates normally post-recovery.",
+      "expectedResult": "The system successfully recovers within the defined RTO (typically 4 hours or less). All critical payment collection functions are restored. No data loss occurs for committed transactions. In-progress transactions at time of failure are either completed or properly rolled back. System integrity is maintained. Automated call system resumes operation. All services are fully functional post-recovery. Recovery procedures are effective and well-documented."
+    },
+    {
+      "type": "non-functional",
+      "title": "Verify System Scalability for Growing User Base",
+      "description": "Verify that the system can scale to accommodate increasing numbers of users and transactions without architectural changes.",
+      "testId": "TC-ZBIO-5136-NF-006",
+      "testDescription": "This scalability test evaluates the system's ability to handle growth in user base and transaction volume through horizontal or vertical scaling.",
+      "prerequisites": "1. Scalability testing environment is configured.\n2. Ability to add resources (servers, database nodes) to the system.\n3. Load testing tools are available.\n4. Baseline performance metrics are established.",
+      "stepsToPerform": "1. Establish baseline performance with current user load (e.g., 1000 users).\n2. Measure response times, throughput, and resource utilization.\n3. Incrementally increase simulated user load (2x, 5x, 10x baseline).\n4. Monitor system performance at each level.\n5. Add system resources (scale up or scale out) as needed.\n6. Re-test with increased load after scaling.\n7. Identify breaking points or bottlenecks.\n8. Document scaling requirements for different load levels.\n9. Verify data consistency across scaled systems.",
+      "expectedResult": "The system maintains acceptable performance levels when scaled horizontally or vertically. Response times remain within acceptable limits even with 10x user load after appropriate scaling. No single point of failure exists. Database can be scaled to handle increased transaction volume. System architecture supports cloud auto-scaling if applicable. Cost of scaling is proportional to load increase."
+    },
+    {
+      "type": "non-functional",
+      "title": "Verify Audit Trail and Compliance Logging",
+      "description": "Verify that all payment collection activities are properly logged for audit and compliance purposes.",
+      "testId": "TC-ZBIO-5136-NF-007",
+      "testDescription": "This compliance test ensures that the system maintains comprehensive audit trails of all payment-related activities for regulatory compliance and investigation purposes.",
+      "prerequisites": "1. Audit logging is enabled in the system.\n2. Log retention policies are configured.\n3. Access to audit log storage and analysis tools.\n4. Regulatory requirements are documented (e.g., PCI-DSS, GDPR).",
+      "stepsToPerform": "1. Perform various payment collection activities (view balance, make payment, failed payment, collection call).\n2. Access audit logs after each activity.\n3. Verify that each activity is logged with timestamp.\n4. Check that user identity is recorded for each action.\n5. Verify sensitive data is properly masked in logs.\n6. Confirm IP addresses and session information are captured.\n7. Test log integrity (tamper-proof mechanisms).\n8. Verify logs are retained according to policy (typically 7 years for financial data).\n9. Test log search and filtering capabilities.\n10. Verify logs can be exported for compliance reporting.",
+      "expectedResult": "All payment collection activities are comprehensively logged. Logs include timestamp, user ID, action performed, IP address, and outcome. Sensitive data (full card numbers, CVV) is never logged or is properly masked. Logs are immutable and tamper-proof. Log retention meets regulatory requirements (minimum 7 years). Logs can be easily searched and filtered. Audit reports can be generated for compliance reviews. System meets PCI-DSS logging requirements."
+    },
+    {
+      "type": "non-functional",
+      "title": "Verify Accessibility Compliance for Payment Interfaces",
+      "description": "Verify that the payment collection interfaces comply with accessibility standards (WCAG 2.1) for users with disabilities.",
+      "testId": "TC-ZBIO-5136-NF-008",
+      "testDescription": "This accessibility test ensures that all users, including those with visual, auditory, motor, or cognitive disabilities, can effectively use the payment collection features.",
+      "prerequisites": "1. Accessibility testing tools are available (e.g., WAVE, axe, JAWS screen reader).\n2. WCAG 2.1 Level AA compliance is the target standard.\n3. Test environment includes various assistive technologies.",
+      "stepsToPerform": "1. Use automated accessibility scanning tools on payment pages.\n2. Test keyboard navigation through entire payment flow (no mouse).\n3. Verify all interactive elements are keyboard accessible.\n4. Test with screen reader (JAWS or NVDA) to ensure proper element labeling.\n5. Check color contrast ratios meet WCAG standards (minimum 4.5:1).\n6. Verify form fields have proper labels and error messages.\n7. Test with browser zoom at 200% to ensure layout remains usable.\n8. Verify all images have appropriate alt text.\n9. Check that time-limited actions provide adequate time or warnings.\n10. Test with voice recognition software.\n11. Verify error messages are clear and accessible.",
+      "expectedResult": "The system meets WCAG 2.1 Level AA compliance. All payment functions are fully keyboard accessible. Screen readers correctly announce all elements, labels, and error messages. Color contrast ratios meet or exceed 4.5:1 for normal text and 3:1 for large text. Forms are properly labeled and provide clear error messages. No functionality depends solely on color or sensory characteristics. Payment process can be completed using only keyboard or assistive technologies. Time limits are adjustable or can be extended."
+    }
+  ]
+}
