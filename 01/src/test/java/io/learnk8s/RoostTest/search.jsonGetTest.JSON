@@ -1,0 +1,165 @@
+[
+  {
+    "description": "Successful request with valid API key and query param",
+    "request_header": {
+      "Authorization": "${AUTH_TOKEN}"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "90001",
+      "key": "${VALID_API_KEY}"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": [
+      {
+        "id": 12345,
+        "name": "Los Angeles",
+        "region": "California",
+        "country": "United States",
+        "lat": 34.0522,
+        "lon": -118.2437,
+        "url": "https://example.com/los-angeles"
+      }
+    ],
+    "expected_status_code": 200
+  },
+  {
+    "description": "Missing required query param",
+    "request_header": {
+      "Authorization": "${AUTH_TOKEN}"
+    },
+    "request_body": {},
+    "query_params": {
+      "key": "${VALID_API_KEY}"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 400,
+      "message": "Required parameter 'q' is missing"
+    },
+    "expected_status_code": 400
+  },
+  {
+    "description": "Invalid query param value",
+    "request_header": {
+      "Authorization": "${AUTH_TOKEN}"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "invalid_value",
+      "key": "${VALID_API_KEY}"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 400,
+      "message": "Invalid value for parameter 'q'"
+    },
+    "expected_status_code": 400
+  },
+  {
+    "description": "Missing API key",
+    "request_header": {},
+    "request_body": {},
+    "query_params": {
+      "q": "90001"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 401,
+      "message": "API key is missing"
+    },
+    "expected_status_code": 401
+  },
+  {
+    "description": "Invalid API key",
+    "request_header": {
+      "Authorization": "invalid_token"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "90001",
+      "key": "invalid_token"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 401,
+      "message": "Invalid API key"
+    },
+    "expected_status_code": 401
+  },
+  {
+    "description": "API key exceeds quota",
+    "request_header": {
+      "Authorization": "${EXCEEDED_QUOTA_TOKEN}"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "90001",
+      "key": "${EXCEEDED_QUOTA_TOKEN}"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 403,
+      "message": "Monthly quota exceeded for API key"
+    },
+    "expected_status_code": 403
+  },
+  {
+    "description": "Disabled API key",
+    "request_header": {
+      "Authorization": "${DISABLED_TOKEN}"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "90001",
+      "key": "${DISABLED_TOKEN}"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 403,
+      "message": "API key is disabled"
+    },
+    "expected_status_code": 403
+  },
+  {
+    "description": "API key without access to resource",
+    "request_header": {
+      "Authorization": "${UNAUTHORIZED_TOKEN}"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "90001",
+      "key": "${UNAUTHORIZED_TOKEN}"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 403,
+      "message": "API key does not have access to this resource"
+    },
+    "expected_status_code": 403
+  }
+]

@@ -1,0 +1,240 @@
+[
+  {
+    "description": "Test a successful request with all valid parameters",
+    "request_header": {
+      "ApiKeyAuth": "${AUTH_TOKEN}",
+      "Content-Type": "application/json"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "New York",
+      "days": 14,
+      "dt": "2023-01-01",
+      "unixdt": 1672531200,
+      "hour": 12,
+      "lang": "en",
+      "alerts": "yes",
+      "aqi": "yes",
+      "tp": 24
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "location": {},
+      "current": {},
+      "forecast": {
+        "forecastday": [
+          {
+            "date": "string",
+            "day": {},
+            "astro": {},
+            "hour": [{}]
+          }
+        ]
+      },
+      "alerts": {
+        "alert": [{}]
+      }
+    },
+    "expected_status_code": 200
+  },
+  {
+    "description": "Test a successful request with only required parameters",
+    "request_header": {
+      "ApiKeyAuth": "${AUTH_TOKEN}",
+      "Content-Type": "application/json"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "London",
+      "days": 7
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "location": {},
+      "forecast": {
+        "forecastday": [
+          {
+            "date": "string",
+            "day": {},
+            "hour": [{}]
+          }
+        ]
+      }
+    },
+    "expected_status_code": 200
+  },
+  {
+    "description": "Test request with a missing required query parameter",
+    "request_header": {
+      "ApiKeyAuth": "${AUTH_TOKEN}",
+      "Content-Type": "application/json"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "Sydney"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 400,
+      "message": "Missing required parameter 'days'"
+    },
+    "expected_status_code": 400
+  },
+  {
+    "description": "Test request with an invalid query parameter value",
+    "request_header": {
+      "ApiKeyAuth": "${AUTH_TOKEN}",
+      "Content-Type": "application/json"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "Tokyo",
+      "days": "invalid"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 400,
+      "message": "Invalid value for parameter 'days'"
+    },
+    "expected_status_code": 400
+  },
+  {
+    "description": "Test request with an invalid date format for 'dt' parameter",
+    "request_header": {
+      "ApiKeyAuth": "${AUTH_TOKEN}",
+      "Content-Type": "application/json"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "Paris",
+      "days": 5,
+      "dt": "01/01/2023"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 400,
+      "message": "Invalid date format for parameter 'dt'"
+    },
+    "expected_status_code": 400
+  },
+  {
+    "description": "Test request with an invalid enum value for 'days' parameter",
+    "request_header": {
+      "ApiKeyAuth": "${AUTH_TOKEN}",
+      "Content-Type": "application/json"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "Berlin",
+      "days": 20
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 400,
+      "message": "Invalid value for parameter 'days'. Must be one of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]."
+    },
+    "expected_status_code": 400
+  },
+  {
+    "description": "Test request without providing API key in headers",
+    "request_header": {
+      "Content-Type": "application/json"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "Moscow",
+      "days": 10
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 401,
+      "message": "Missing API key authentication"
+    },
+    "expected_status_code": 401
+  },
+  {
+    "description": "Test request with an invalid API key",
+    "request_header": {
+      "ApiKeyAuth": "invalid_token",
+      "Content-Type": "application/json"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "Madrid",
+      "days": 3
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 401,
+      "message": "Invalid API key provided"
+    },
+    "expected_status_code": 401
+  },
+  {
+    "description": "Test request exceeding monthly quota limit for the API key",
+    "request_header": {
+      "ApiKeyAuth": "${AUTH_TOKEN}",
+      "Content-Type": "application/json"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "Rome",
+      "days": 7
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 403,
+      "message": "Monthly quota exceeded for API key"
+    },
+    "expected_status_code": 403
+  },
+  {
+    "description": "Test request accessing a feature not allowed in current plan",
+    "request_header": {
+      "ApiKeyAuth": "${AUTH_TOKEN}",
+      "Content-Type": "application/json"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "Athens",
+      "days": 5,
+      "tp": 15
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 403,
+      "message": "The 'tp' parameter is not available in your current subscription plan"
+    },
+    "expected_status_code": 403
+  }
+]

@@ -1,0 +1,409 @@
+[
+  {
+    "description": "Test valid mandatory query params",
+    "request_header": {
+      "Content-Type": "application/json"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "London",
+      "dt": "2022-01-01"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "location": {
+        "name": "London",
+        "region": "City of London, Greater London",
+        "country": "United Kingdom"
+      },
+      "forecast": {
+        "forecastday": [
+          {
+            "date": "2022-01-01",
+            "day": {
+              "condition": {
+                "text": "Patchy rain possible"
+              }
+            },
+            "hour": []
+          }
+        ]
+      }
+    },
+    "expected_status_code": 200
+  },
+  {
+    "description": "Test missing mandatory q param",
+    "request_header": {
+      "Content-Type": "application/json"  
+    },
+    "request_body": {},
+    "query_params": {
+      "dt": "2022-01-01"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 1003,
+      "message": "You must provide the location for the query parameter 'q'"
+    },
+    "expected_status_code": 400
+  },
+  {
+    "description": "Test invalid date format for dt param",
+    "request_header": {
+      "Content-Type": "application/json"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "London",
+      "dt": "01-01-2022"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 1004,
+      "message": "Date format error: The API only accepts dates in the format 'yyyy-MM-dd'"
+    },
+    "expected_status_code": 400
+  },
+  {
+    "description": "Test unixdt param instead of dt",
+    "request_header": {
+      "Content-Type": "application/json"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "London",
+      "unixdt": 1609459200
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "location": {
+        "name": "London"
+      },
+      "forecast": {
+        "forecastday": [
+          {
+            "date": "2021-01-01"
+          }
+        ]
+      }
+    },
+    "expected_status_code": 200
+  },
+  {
+    "description": "Test date range with end_dt param",
+    "request_header": {
+      "Content-Type": "application/json"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "London",
+      "dt": "2022-01-01",
+      "end_dt": "2022-01-15"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "location": {
+        "name": "London"
+      },
+      "forecast": {
+        "forecastday": [
+          {
+            "date": "2022-01-01"
+          },
+          {
+            "date": "2022-01-02"
+          },
+          {
+            "date": "2022-01-15"
+          }
+        ]
+      }
+    },
+    "expected_status_code": 200
+  },
+  {
+    "description": "Test unixend_dt param instead of end_dt", 
+    "request_header": {
+      "Content-Type": "application/json"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "London",
+      "dt": "2022-01-01", 
+      "unixend_dt": 1642704000
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "location": {
+        "name": "London"
+      },
+      "forecast": {
+        "forecastday": [
+          {
+            "date": "2022-01-01"
+          },
+          {
+            "date": "2022-01-15"
+          }
+        ]
+      }
+    },
+    "expected_status_code": 200
+  },
+  {
+    "description": "Test language param",
+    "request_header": {
+      "Content-Type": "application/json"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "Moscow",
+      "lang": "ru"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "location": {
+        "name": "Moscow"
+      },
+      "forecast": {
+        "forecastday": [
+          {
+            "day": {
+              "condition": {
+                "text": "Облачно с прояснениями"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "expected_status_code": 200
+  },
+  {
+    "description": "Test invalid language code",
+    "request_header": {
+      "Content-Type": "application/json"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "Paris",
+      "lang": "zz"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "location": {
+        "name": "Paris"
+      },
+      "forecast": {
+        "forecastday": [
+          {
+            "day": {
+              "condition": {
+                "text": "Partly cloudy"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "expected_status_code": 200
+  },
+  {
+    "description": "Test hour param to get data for specific hour",
+    "request_header": {
+      "Content-Type": "application/json"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "Berlin",
+      "dt": "2022-01-01",
+      "hour": 14
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "location": {
+        "name": "Berlin"
+      },
+      "forecast": {
+        "forecastday": [
+          {
+            "date": "2022-01-01",
+            "hour": [
+              {
+                "time": "14:00"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "expected_status_code": 200
+  },
+  {
+    "description": "Test invalid hour value",
+    "request_header": {
+      "Content-Type": "application/json"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "Cairo",
+      "hour": 25
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "location": {
+        "name": "Cairo"
+      },
+      "forecast": {
+        "forecastday": [
+          {
+            "date": "2022-01-01",
+            "hour": [
+              {
+                "time": "00:00"
+              },
+              {
+                "time": "01:00"
+              },
+              {
+                "time": "23:00"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "expected_status_code": 200
+  },
+  {
+    "description": "Test request without API key",
+    "request_header": {
+      "Content-Type": "application/json"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "Tokyo",
+      "dt": "2022-01-01"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 1002,
+      "message": "No API key provided."
+    },
+    "expected_status_code": 401
+  },
+  {
+    "description": "Test with invalid API key",
+    "request_header": {
+      "Content-Type": "application/json",
+      "Authorization": "invalid_token"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "Sydney"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 2006,
+      "message": "API key is invalid"
+    },
+    "expected_status_code": 401
+  },
+  {
+    "description": "Test quota exceeded scenario",
+    "request_header": {
+      "Content-Type": "application/json",
+      "Authorization": "${AUTH_TOKEN}"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "Mumbai"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 2007,
+      "message": "Your quota for requests has been exceeded"  
+    },
+    "expected_status_code": 403
+  },
+  {
+    "description": "Test with disabled API key",
+    "request_header": {
+      "Content-Type": "application/json",
+      "Authorization": "${AUTH_TOKEN}" 
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "Rio de Janeiro"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 2008,
+      "message": "Your API key has been disabled" 
+    },
+    "expected_status_code": 403
+  },
+  {
+    "description": "Test with invalid location in q param",
+    "request_header": {
+      "Content-Type": "application/json"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "xxyyzz",
+      "dt": "2022-01-01"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 1006,
+      "message": "No location found matching the query"
+    },
+    "expected_status_code": 400
+  }
+]

@@ -1,0 +1,212 @@
+[
+  {
+    "description": "Test valid request with US zipcode",
+    "request_header": {
+      "Authorization": "${AUTH_TOKEN}"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "90001"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "name": "string",
+      "region": "string",
+      "country": "string",
+      "lat": 0.0,
+      "lon": 0.0,
+      "tz_id": "string",
+      "localtime_epoch": 0,
+      "localtime": "string"
+    },
+    "expected_status_code": 200
+  },
+  {
+    "description": "Test valid request with UK postcode",
+    "request_header": {
+      "Authorization": "${AUTH_TOKEN}"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "SW1A 1AA"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "name": "string",
+      "region": "string",
+      "country": "string",
+      "lat": 0.0,
+      "lon": 0.0,
+      "tz_id": "string",
+      "localtime_epoch": 0,
+      "localtime": "string"
+    },
+    "expected_status_code": 200
+  },
+  {
+    "description": "Test valid request with latitude and longitude",
+    "request_header": {
+      "Authorization": "${AUTH_TOKEN}"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "51.5085,-0.1257"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "name": "string",
+      "region": "string",
+      "country": "string",
+      "lat": 0.0,
+      "lon": 0.0,
+      "tz_id": "string",
+      "localtime_epoch": 0,
+      "localtime": "string"
+    },
+    "expected_status_code": 200
+  },
+  {
+    "description": "Test valid request with city name",
+    "request_header": {
+      "Authorization": "${AUTH_TOKEN}"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "Mumbai"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "name": "string",
+      "region": "string",
+      "country": "string",
+      "lat": 0.0,
+      "lon": 0.0,
+      "tz_id": "string",
+      "localtime_epoch": 0,
+      "localtime": "string"
+    },
+    "expected_status_code": 200
+  },
+  {
+    "description": "Test request without 'q' query parameter",
+    "request_header": {
+      "Authorization": "${AUTH_TOKEN}"
+    },
+    "request_body": {},
+    "query_params": {},
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 1003,
+      "message": "Parameter 'q' not provided"
+    },
+    "expected_status_code": 400
+  },
+  {
+    "description": "Test request with invalid 'q' value",
+    "request_header": {
+      "Authorization": "${AUTH_TOKEN}"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "###"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 1006,
+      "message": "No location found matching parameter 'q'"
+    },
+    "expected_status_code": 400
+  },
+  {
+    "description": "Test request without API key",
+    "request_header": {},
+    "request_body": {},
+    "query_params": {
+      "q": "90001"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 1002,
+      "message": "API key not provided"
+    },
+    "expected_status_code": 401
+  },
+  {
+    "description": "Test request with invalid API key",
+    "request_header": {
+      "Authorization": "invalid_token"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "90001"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 2006,
+      "message": "API key provided is invalid"
+    },
+    "expected_status_code": 401
+  },
+  {
+    "description": "Test request when API key exceeded calls quota",
+    "request_header": {
+      "Authorization": "${EXCEEDED_QUOTA_TOKEN}"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "90001"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 2007,
+      "message": "API key has exceeded calls per month quota"
+    },
+    "expected_status_code": 403
+  },
+  {
+    "description": "Test request with disabled API key",
+    "request_header": {
+      "Authorization": "${DISABLED_TOKEN}"
+    },
+    "request_body": {},
+    "query_params": {
+      "q": "90001"
+    },
+    "path_params": {},
+    "response_header": {
+      "Content-Type": "application/json"
+    },
+    "response_body": {
+      "code": 2008, 
+      "message": "API key has been disabled"
+    },
+    "expected_status_code": 403
+  }
+]
